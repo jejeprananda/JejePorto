@@ -1,0 +1,102 @@
+import Image from "next/image";
+import Link from "next/link";
+
+import { ArrowUpRight } from "lucide-react";
+
+import type { Project } from "@/types/project";
+
+type ProjectsSectionProps = {
+  projects: Project[];
+};
+
+export function ProjectsSection({ projects }: ProjectsSectionProps) {
+  return (
+    <section
+      id="projects"
+      aria-labelledby="projects-title"
+      className="scroll-mt-24 bg-white px-5 py-16 sm:px-8 sm:py-20 lg:px-12 lg:py-28"
+    >
+      <div className="mx-auto grid w-full max-w-[1280px] gap-12 lg:grid-cols-[280px_minmax(0,1fr)] lg:gap-20">
+        <header>
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-orange-600">
+            Selected projects
+          </p>
+          <h2
+            id="projects-title"
+            className="mt-4 text-4xl font-semibold leading-none tracking-[-0.04em] text-slate-950 sm:text-5xl"
+          >
+            Digital products
+            <br />
+            I&apos;ve built
+          </h2>
+          <p className="mt-6 max-w-sm text-sm leading-7 text-slate-600 sm:text-base">
+            A selection of websites and web applications designed to solve real
+            problems.
+          </p>
+        </header>
+
+        <div className="border-b border-slate-200">
+          {projects.length === 0 ? (
+            <p className="border-t border-slate-200 py-8 text-sm text-slate-600">
+              No projects available yet.
+            </p>
+          ) : (
+            projects.map((project, index) => (
+              <article
+                key={project.slug}
+                className="group grid gap-5 border-t border-slate-200 py-6 sm:grid-cols-[72px_minmax(0,1fr)_auto] sm:items-center sm:gap-6 lg:py-7"
+              >
+                <div
+                  className={[
+                    "relative flex size-16 shrink-0 items-center justify-center overflow-hidden rounded-2xl sm:size-[72px]",
+                    project.iconHasDarkBg
+                      ? "bg-slate-950 p-2.5"
+                      : "bg-transparent",
+                  ].join(" ")}
+                >
+                  <Image
+                    src={project.iconPath}
+                    alt={`${project.title} logo`}
+                    width={72}
+                    height={72}
+                    className="h-full w-full object-contain"
+                  />
+                </div>
+
+                <div className="min-w-0">
+                  <div className="flex items-center gap-3">
+                    <span className="font-mono text-xs text-orange-600">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <p className="text-xs font-medium uppercase tracking-[0.12em] text-slate-500">
+                      {project.category}
+                    </p>
+                  </div>
+                  <h3 className="mt-2 text-xl font-semibold tracking-[-0.025em] text-slate-950 sm:text-2xl">
+                    {project.title}
+                  </h3>
+                  <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-600">
+                    {project.shortDescription}
+                  </p>
+                </div>
+
+                <div className="flex items-center justify-between gap-5 sm:flex-col sm:items-end sm:justify-center">
+                  <span className="font-mono text-xs text-slate-500">
+                    {project.year}
+                  </span>
+                  <Link
+                    href={`/works/${project.slug}`}
+                    aria-label={`Learn more about ${project.title}`}
+                    className="inline-flex size-11 items-center justify-center rounded-full border border-slate-200 text-slate-900 transition duration-300 hover:border-orange-500 hover:bg-orange-500 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-offset-2"
+                  >
+                    <ArrowUpRight className="size-4" aria-hidden="true" />
+                  </Link>
+                </div>
+              </article>
+            ))
+          )}
+        </div>
+      </div>
+    </section>
+  );
+}
