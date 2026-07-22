@@ -2,7 +2,23 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
-First, run the development server:
+First, install dependencies:
+
+```bash
+npm install
+```
+
+## Database
+
+Seed the local SQLite database before running the app:
+
+```bash
+npm run seed
+```
+
+This creates `data/portfolio.db` (gitignored) from `scripts/seed-db.ts`.
+
+Then run the development server:
 
 ```bash
 npm run dev
