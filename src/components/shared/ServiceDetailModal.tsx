@@ -86,6 +86,7 @@ export function ServiceDetailModal({
         role="dialog"
         aria-modal="true"
         aria-labelledby="service-modal-title"
+        aria-describedby="service-modal-description"
         className="max-h-[85dvh] w-full max-w-lg overflow-y-auto rounded-3xl bg-white p-6 shadow-2xl sm:p-8"
         onClick={(event) => event.stopPropagation()}
       >
@@ -107,13 +108,16 @@ export function ServiceDetailModal({
             type="button"
             aria-label="Close service details"
             onClick={onClose}
-            className="inline-flex size-10 items-center justify-center rounded-full border border-slate-200 text-slate-700 transition hover:border-orange-500 hover:text-orange-600"
+            className="inline-flex size-10 items-center justify-center rounded-full border border-slate-200 text-slate-700 transition hover:border-orange-500 hover:text-orange-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-offset-2"
           >
             <X className="size-4" aria-hidden="true" />
           </button>
         </div>
 
-        <p className="mt-6 text-sm leading-7 text-slate-600 sm:text-base sm:leading-8">
+        <p
+          id="service-modal-description"
+          className="mt-6 text-sm leading-7 text-slate-600 sm:text-base sm:leading-8"
+        >
           {service.detailDescription}
         </p>
       </div>

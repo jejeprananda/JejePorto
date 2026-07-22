@@ -18,6 +18,8 @@ npm run seed
 
 This creates `data/portfolio.db` (gitignored) from `scripts/seed-db.ts`.
 
+For build and deploy, run `npm run seed` before `npm run build` so the SQLite database exists at build time.
+
 Then run the development server:
 
 ```bash
@@ -32,7 +34,7 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+You can start editing the page by modifying `src/app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
