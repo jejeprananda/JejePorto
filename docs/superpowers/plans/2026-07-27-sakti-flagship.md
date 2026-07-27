@@ -285,38 +285,32 @@ Use this SAKTI content (adapt field names to the seed’s snake_case shape alrea
     {
       kind: "challenge",
       title: "Changing budgeting policies",
-      description:
-        "Enhancements had to track evolving government policies and annual budgeting regulations.",
+      body: "Enhancements had to track evolving government policies and annual budgeting regulations.",
     },
     {
       kind: "challenge",
       title: "Complex regulated forms",
-      description:
-        "Large forms with numerous validation rules had to stay usable for thousands of government users.",
+      body: "Large forms with numerous validation rules had to stay usable for thousands of government users.",
     },
     {
       kind: "challenge",
       title: "Cross-module data integrity",
-      description:
-        "Planning and budgeting stages required strict consistency across interconnected financial modules.",
+      body: "Planning and budgeting stages required strict consistency across interconnected financial modules.",
     },
     {
       kind: "solution",
       title: "Analyst-driven business rules",
-      description:
-        "Implemented functional rules in the Angular UI integrated with Spring Boot APIs to enforce regulation-safe workflows.",
+      body: "Implemented functional rules in the Angular UI integrated with Spring Boot APIs to enforce regulation-safe workflows.",
     },
     {
       kind: "solution",
       title: "Sync-then-budget pipeline",
-      description:
-        "Synchronization of RENJA into SAKTI established a validated foundation before RKA-K/L preparation and Revisi DIPA.",
+      body: "Synchronization of RENJA into SAKTI established a validated foundation before RKA-K/L preparation and Revisi DIPA.",
     },
     {
       kind: "solution",
       title: "Enterprise-safe delivery",
-      description:
-        "UAT-backed releases on RHEL kept features shipping without disrupting nationwide financial operations.",
+      body: "UAT-backed releases on RHEL kept features shipping without disrupting nationwide financial operations.",
     },
   ],
   results: [

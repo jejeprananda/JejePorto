@@ -52,29 +52,29 @@ type SocialLink = {
 const socialLinks: SocialLink[] = [
   {
     label: "GitHub",
-    href: "https://github.com/yourusername",
+    href: "https://github.com/jejeprananda/",
     icon: GithubIcon,
   },
   {
     label: "LinkedIn",
-    href: "https://www.linkedin.com/in/yourusername",
+    href: "https://www.linkedin.com/in/jessy-prananda-22171bb5/",
     icon: LinkedinIcon,
   },
   {
     label: "Instagram",
-    href: "https://www.instagram.com/yourusername",
+    href: "https://www.instagram.com/jetechtalk",
     icon: InstagramIcon,
   },
   {
     label: "Email",
-    href: "mailto:your-email@example.com",
+    href: "mailto:jessy.prananda@gmail.com",
     icon: ({ className }) => (
       <Mail aria-hidden="true" className={className} strokeWidth={2} />
     ),
   },
   {
     label: "WhatsApp",
-    href: "https://wa.me/628xxxxxxxxxx",
+    href: "https://wa.me/628987847242",
     icon: ({ className }) => (
       <MessageCircle aria-hidden="true" className={className} strokeWidth={2} />
     ),

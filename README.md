@@ -47,8 +47,22 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
+## Deploy on Netlify
+
+This project is configured for Netlify via `netlify.toml` and `@netlify/plugin-nextjs`.
+
+1. Connect the repo in the Netlify dashboard (or use the Netlify CLI).
+2. Build command is already set: `npm run seed && npm run build`.
+3. After the first successful deploy, open **Forms** in the Netlify UI — the `contact` form should appear (registered from `public/__forms.html`).
+4. Enable form email notifications to your inbox (e.g. `jessy.prananda@gmail.com`) under Forms → Form notifications.
+
+### Contact form notes
+
+- Production / `netlify dev`: submissions go to Netlify Forms.
+- Plain `npm run dev`: Netlify Forms will not receive messages (expect a failed submit unless you use Netlify Dev).
+
 ## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+You can also deploy with the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme), but contact delivery in this repo is wired for **Netlify Forms**, not Vercel.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

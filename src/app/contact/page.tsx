@@ -18,8 +18,8 @@ export default function ContactPage() {
           Let&apos;s talk
         </h1>
         <p className="mt-5 text-base leading-7 text-slate-600">
-          Tell me about your project. This form is a UI scaffold for now —
-          message delivery will be connected later.
+          Tell me about your project, timeline, and goals. Send a message below
+          and I&apos;ll get back to you.
         </p>
         <ContactForm />
       </div>
