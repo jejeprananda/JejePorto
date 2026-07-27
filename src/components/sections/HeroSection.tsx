@@ -194,7 +194,7 @@ export function HeroSection() {
                   lg:text-[2.35rem]
                 "
               >
-                Fullstack Designer
+                Fullstack Developer
               </p>
 
               <p
