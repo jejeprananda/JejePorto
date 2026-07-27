@@ -45,10 +45,10 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
               <article
                 key={project.slug}
                 className={[
-                  "group grid gap-5 border-t border-slate-200 py-6 sm:grid-cols-[72px_minmax(0,1fr)_auto] sm:items-center sm:gap-6 lg:py-7",
+                  "group grid gap-5 border-t py-6 sm:grid-cols-[72px_minmax(0,1fr)_auto] sm:items-center sm:gap-6 lg:py-7",
                   project.isFlagship
                     ? "bg-slate-50/80 px-3 sm:px-4 -mx-3 sm:-mx-4 rounded-xl border-orange-500/20"
-                    : "",
+                    : "border-slate-200",
                 ].join(" ")}
               >
                 <div
