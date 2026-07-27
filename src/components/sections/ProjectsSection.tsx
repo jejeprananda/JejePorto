@@ -44,7 +44,12 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
             projects.map((project, index) => (
               <article
                 key={project.slug}
-                className="group grid gap-5 border-t border-slate-200 py-6 sm:grid-cols-[72px_minmax(0,1fr)_auto] sm:items-center sm:gap-6 lg:py-7"
+                className={[
+                  "group grid gap-5 border-t border-slate-200 py-6 sm:grid-cols-[72px_minmax(0,1fr)_auto] sm:items-center sm:gap-6 lg:py-7",
+                  project.isFlagship
+                    ? "bg-slate-50/80 px-3 sm:px-4 -mx-3 sm:-mx-4 rounded-xl border-orange-500/20"
+                    : "",
+                ].join(" ")}
               >
                 <div
                   className={[
@@ -64,13 +69,18 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
                 </div>
 
                 <div className="min-w-0">
-                  <div className="flex items-center gap-3">
+                  <div className="flex flex-wrap items-center gap-3">
                     <span className="font-mono text-xs text-orange-600">
                       {String(index + 1).padStart(2, "0")}
                     </span>
                     <p className="text-xs font-medium uppercase tracking-[0.12em] text-slate-500">
                       {project.category}
                     </p>
+                    {project.isFlagship ? (
+                      <span className="rounded-md border border-orange-500/30 bg-orange-500/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-orange-600">
+                        Flagship
+                      </span>
+                    ) : null}
                   </div>
                   <h3 className="mt-2 text-xl font-semibold tracking-[-0.025em] text-slate-950 sm:text-2xl">
                     {project.title}
