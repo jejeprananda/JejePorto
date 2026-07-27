@@ -1,4 +1,6 @@
 import assert from "node:assert/strict";
+import { existsSync } from "node:fs";
+import { join } from "node:path";
 import { before, describe, it } from "node:test";
 
 import { getProjectBySlug } from "../../src/services/projects/getProjectBySlug";
@@ -19,8 +21,11 @@ describe("portfolio sqlite getters", () => {
       projects.map((project) => project.slug),
       ["sakti", "angkasa", "jfaa", "skk"],
     );
+    assert.equal(projects.filter((p) => p.isFlagship).length, 1);
     assert.equal(projects[0]?.isFlagship, true);
     assert.equal(projects[1]?.isFlagship, false);
+    assert.equal(projects[2]?.isFlagship, false);
+    assert.equal(projects[3]?.isFlagship, false);
     assert.equal(projects[1]?.iconHasDarkBg, true);
     assert.equal(projects[2]?.iconHasDarkBg, false);
   });
@@ -41,6 +46,25 @@ describe("portfolio sqlite getters", () => {
     assert.ok(project.features.length >= 4);
     assert.ok(project.tech.includes("Angular"));
     assert.ok(project.tech.includes("Oracle Database"));
+  });
+
+  it("has public assets on disk for SAKTI case study images", () => {
+    const project = getProjectBySlug("sakti");
+    assert.ok(project);
+
+    const publicRoot = join(process.cwd(), "public");
+    const paths = [
+      project.iconPath,
+      project.heroImage,
+      ...project.gallery.map((item) => item.imagePath),
+    ];
+
+    for (const assetPath of paths) {
+      assert.ok(
+        existsSync(join(publicRoot, assetPath.replace(/^\//, ""))),
+        `missing public asset: ${assetPath}`,
+      );
+    }
   });
 
   it("returns a project by slug and null for unknown slug", () => {
