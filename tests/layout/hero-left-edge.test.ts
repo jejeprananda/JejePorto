@@ -28,6 +28,6 @@ describe("HeroSection left-edge layout", () => {
   });
 
   it("keeps the inner text column max width", () => {
-    assert.match(heroSource, /max-w-\[760px\]/);
+    assert.match(heroSource, /className="w-full max-w-\[760px\]"/);
   });
 });
