@@ -12,6 +12,7 @@ type ProjectRow = {
   icon_path: string;
   icon_has_dark_bg: number;
   sort_order: number;
+  is_flagship: number;
 };
 
 function mapProject(row: ProjectRow): Project {
@@ -26,6 +27,7 @@ function mapProject(row: ProjectRow): Project {
     iconPath: row.icon_path,
     iconHasDarkBg: Boolean(row.icon_has_dark_bg),
     sortOrder: row.sort_order,
+    isFlagship: Boolean(row.is_flagship),
   };
 }
 
