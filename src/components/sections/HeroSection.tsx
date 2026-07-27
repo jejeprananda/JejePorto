@@ -136,12 +136,11 @@ export function HeroSection() {
 
       <div
         className="
-          mx-auto flex min-h-dvh w-full max-w-[1440px]
+          flex min-h-dvh w-full
           items-center
-          px-5 pb-14 pt-28
-          sm:px-8 sm:pb-16 sm:pt-32
-          lg:px-12 lg:pb-20 lg:pt-36
-          xl:px-16
+          pl-5 pr-5 pb-14 pt-28
+          sm:pl-4 sm:pr-8 sm:pb-16 sm:pt-32
+          lg:pb-20 lg:pt-36
         "
       >
         <div className="w-full max-w-[760px]">
