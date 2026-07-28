@@ -65,3 +65,15 @@ describe("ProjectsSection reveals", () => {
     assert.match(source, /120 \+ index \* 80|120 \+ index\*80/);
   });
 });
+
+describe("ServicesSection reveals", () => {
+  it("wraps header and cards with scroll Reveal", () => {
+    const source = read("src/components/sections/ServicesSection.tsx");
+
+    assert.match(source, /from "@\/components\/shared\/Reveal"/);
+    assert.match(source, /trigger="scroll"/);
+    assert.match(source, /direction="up"/);
+    assert.match(source, /120 \+ index \* 80|120 \+ index\*80/);
+    assert.match(source, /ServiceDetailModal/);
+  });
+});
