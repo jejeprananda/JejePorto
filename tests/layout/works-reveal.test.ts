@@ -79,3 +79,23 @@ describe("ServicesSection reveals", () => {
     assert.match(source, /group flex h-full min-h-\[360px\]/);
   });
 });
+
+describe("StackSection and Works CTA reveals", () => {
+  it("wraps stack header and groups with scroll Reveal", () => {
+    const source = read("src/components/sections/StackSection.tsx");
+
+    assert.match(source, /from "@\/components\/shared\/Reveal"/);
+    assert.match(source, /trigger="scroll"/);
+    assert.match(source, /direction="up"/);
+    assert.match(source, /120 \+ index \* 80|120 \+ index\*80/);
+  });
+
+  it("reveals CTA copy then contact button", () => {
+    const page = read("src/app/works/page.tsx");
+
+    assert.match(page, /from "@\/components\/shared\/Reveal"/);
+    assert.match(page, /Start a project/);
+    assert.match(page, /delay=\{100\}/);
+    assert.match(page, /Contact Me/);
+  });
+});
