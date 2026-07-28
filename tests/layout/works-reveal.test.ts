@@ -54,3 +54,14 @@ describe("WorksHero", () => {
     assert.doesNotMatch(page, /bg-hero\.png/);
   });
 });
+
+describe("ProjectsSection reveals", () => {
+  it("wraps header and rows with scroll Reveal", () => {
+    const source = read("src/components/sections/ProjectsSection.tsx");
+
+    assert.match(source, /from "@\/components\/shared\/Reveal"/);
+    assert.match(source, /trigger="scroll"/);
+    assert.match(source, /direction="up"/);
+    assert.match(source, /120 \+ index \* 80|120 \+ index\*80/);
+  });
+});
