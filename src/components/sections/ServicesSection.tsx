@@ -84,10 +84,11 @@ export function ServicesSection({
                     direction="up"
                     delay={120 + index * 80}
                     duration={700}
+                    className="h-full"
                   >
                     <article
                       className={[
-                        "group flex min-h-[360px] flex-col border-b border-slate-200 py-8",
+                        "group flex h-full min-h-[360px] flex-col border-b border-slate-200 py-8",
                         "sm:px-7",
                         index % 2 === 0 ? "sm:border-r" : "",
                         index > 0 ? "xl:border-l" : "",

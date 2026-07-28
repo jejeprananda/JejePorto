@@ -75,5 +75,7 @@ describe("ServicesSection reveals", () => {
     assert.match(source, /direction="up"/);
     assert.match(source, /120 \+ index \* 80|120 \+ index\*80/);
     assert.match(source, /ServiceDetailModal/);
+    assert.match(source, /className="h-full"/);
+    assert.match(source, /group flex h-full min-h-\[360px\]/);
   });
 });
