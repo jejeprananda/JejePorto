@@ -11,6 +11,16 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <main>
+      <noscript>
+        <style>{`
+          [data-reveal] {
+            opacity: 1 !important;
+            translate: 0 0 !important;
+            scale: 1 1 !important;
+            transition: none !important;
+          }
+        `}</style>
+      </noscript>
       <HeroSection />
     </main>
   );

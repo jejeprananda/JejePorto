@@ -1,8 +1,12 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
 
 import { Mail, MessageCircle } from "lucide-react";
+
+import { Reveal } from "@/components/shared/Reveal";
 
 function GithubIcon({ className }: { className?: string }) {
   return (
@@ -88,51 +92,56 @@ export function HeroSection() {
       aria-labelledby="hero-title"
       className="relative isolate min-h-dvh w-full overflow-hidden bg-[#f5f6f7]"
     >
-      {/* Background */}
-      <Image
-        src="/images/bg-hero.png"
-        alt=""
-        fill
-        priority
-        sizes="100vw"
-        className="
-          -z-30 object-cover
-          object-[68%_center]
-          sm:object-[64%_center]
-          md:object-[60%_center]
-          lg:object-center
-        "
-      />
-
-      {/* Desktop readability overlay */}
-      <div
-        aria-hidden="true"
-        className="
-          absolute inset-0 -z-20
-          bg-gradient-to-r
-          from-white
-          via-white/90
-          to-white/10
-          sm:via-white/75
-          lg:from-white/95
-          lg:via-white/45
-          lg:to-transparent
-        "
-      />
-
-      {/* Mobile overlay */}
-      <div
-        aria-hidden="true"
-        className="
-          absolute inset-0 -z-20
-          bg-gradient-to-b
-          from-white/75
-          via-white/20
-          to-white/10
-          lg:from-white/40
-          lg:via-transparent
-        "
-      />
+      <Reveal
+        trigger="mount"
+        direction="right"
+        distance="wide"
+        duration={800}
+        className="absolute inset-0 -z-30"
+      >
+        <div className="absolute inset-0">
+          <Image
+            src="/images/bg-hero.png"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="
+              object-cover
+              object-[68%_center]
+              sm:object-[64%_center]
+              md:object-[60%_center]
+              lg:object-center
+            "
+          />
+          <div
+            aria-hidden="true"
+            className="
+              absolute inset-0
+              bg-gradient-to-r
+              from-white
+              via-white/90
+              to-white/10
+              sm:via-white/75
+              lg:from-white/95
+              lg:via-white/45
+              lg:to-transparent
+            "
+          />
+          <div
+            aria-hidden="true"
+            className="
+              absolute inset-0
+              bg-gradient-to-b
+              from-white/75
+              via-white/20
+              to-white/10
+              lg:from-white/40
+              lg:via-transparent
+            "
+          />
+        </div>
+      </Reveal>
 
       <div
         className="
@@ -145,154 +154,173 @@ export function HeroSection() {
       >
         <div className="w-full max-w-[760px]">
           <div className="flex gap-5 sm:gap-8">
-            {/* Decorative vertical line */}
-            <div
-              aria-hidden="true"
+            <Reveal
+              trigger="mount"
+              direction="scaleY"
+              delay={150}
+              duration={700}
               className="
-                relative hidden w-px shrink-0 overflow-hidden
+                relative hidden w-px shrink-0 self-stretch overflow-hidden
                 bg-slate-900/80
                 sm:block
               "
             >
-              <span className="absolute bottom-0 left-0 h-20 w-px bg-orange-500" />
-            </div>
+              <div aria-hidden="true" className="relative h-full w-full">
+                <span className="absolute bottom-0 left-0 h-20 w-px bg-orange-500" />
+              </div>
+            </Reveal>
 
             <div className="min-w-0">
-              <p
-                className="
-                  text-3xl font-light leading-none tracking-[-0.035em]
-                  text-slate-800
-                  sm:text-4xl
-                  lg:text-[2.65rem]
-                "
-              >
-                Hi, I&apos;m
-              </p>
+              <Reveal trigger="mount" direction="left" delay={200} duration={700}>
+                <p
+                  className="
+                    text-3xl font-light leading-none tracking-[-0.035em]
+                    text-slate-800
+                    sm:text-4xl
+                    lg:text-[2.65rem]
+                  "
+                >
+                  Hi, I&apos;m
+                </p>
+              </Reveal>
 
-              <h1
-                id="hero-title"
-                className="
-                  mt-4 max-w-[760px]
-                  text-[clamp(3.3rem,7.2vw,6rem)]
-                  font-semibold leading-[0.88]
-                  tracking-[-0.065em]
-                  text-slate-950
-                "
-              >
-                Jessy{" "}
-                <span className="text-orange-500">
-                  Prananda
-                </span>
-              </h1>
+              <Reveal trigger="mount" direction="left" delay={280} duration={700}>
+                <h1
+                  id="hero-title"
+                  className="
+                    mt-4 max-w-[760px]
+                    text-[clamp(3.3rem,7.2vw,6rem)]
+                    font-semibold leading-[0.88]
+                    tracking-[-0.065em]
+                    text-slate-950
+                  "
+                >
+                  Jessy{" "}
+                  <span className="text-orange-500">Prananda</span>
+                </h1>
+              </Reveal>
 
-              <p
-                className="
-                  mt-5 text-2xl font-semibold
-                  tracking-[-0.035em]
-                  text-slate-950
-                  sm:text-3xl
-                  lg:text-[2.35rem]
-                "
-              >
-                Fullstack Developer
-              </p>
+              <Reveal trigger="mount" direction="left" delay={360} duration={700}>
+                <p
+                  className="
+                    mt-5 text-2xl font-semibold
+                    tracking-[-0.035em]
+                    text-slate-950
+                    sm:text-3xl
+                    lg:text-[2.35rem]
+                  "
+                >
+                  Fullstack Developer
+                </p>
+              </Reveal>
 
-              <p
-                lang="ja"
-                className="
-                  mt-9 max-w-xl
-                  text-sm font-medium leading-7
-                  tracking-[0.08em]
-                  text-slate-600
-                  sm:text-base sm:leading-8
-                  lg:text-lg
-                "
-              >
-                デザインとコードで、アイデアをカタチにする。
-              </p>
+              <Reveal trigger="mount" direction="left" delay={440} duration={700}>
+                <p
+                  lang="ja"
+                  className="
+                    mt-9 max-w-xl
+                    text-sm font-medium leading-7
+                    tracking-[0.08em]
+                    text-slate-600
+                    sm:text-base sm:leading-8
+                    lg:text-lg
+                  "
+                >
+                  デザインとコードで、アイデアをカタチにする。
+                </p>
+              </Reveal>
 
-              <p
-                className="
-                  mt-3 max-w-xl
-                  text-sm leading-7 text-slate-600
-                  sm:text-base
-                "
-              >
-                I design thoughtful interfaces and build them into fast,
-                functional, and scalable digital products.
-              </p>
+              <Reveal trigger="mount" direction="left" delay={520} duration={700}>
+                <p
+                  className="
+                    mt-3 max-w-xl
+                    text-sm leading-7 text-slate-600
+                    sm:text-base
+                  "
+                >
+                  I design thoughtful interfaces and build them into fast,
+                  functional, and scalable digital products.
+                </p>
+              </Reveal>
 
               <div className="mt-8 flex flex-wrap gap-3 sm:mt-9">
-                <Link
-                  href="/works"
-                  className="
-                    inline-flex min-h-12 items-center justify-center
-                    rounded-sm bg-slate-950 px-6
-                    text-sm font-medium text-white
-                    transition duration-300
-                    hover:-translate-y-0.5 hover:bg-slate-800
-                    focus-visible:outline-none
-                    focus-visible:ring-2
-                    focus-visible:ring-orange-500
-                    focus-visible:ring-offset-2
-                  "
-                >
-                  View My Work
-                </Link>
+                <Reveal trigger="mount" direction="left" delay={600} duration={700}>
+                  <Link
+                    href="/works"
+                    className="
+                      inline-flex min-h-12 items-center justify-center
+                      rounded-sm bg-slate-950 px-6
+                      text-sm font-medium text-white
+                      transition duration-300
+                      hover:-translate-y-0.5 hover:bg-slate-800
+                      focus-visible:outline-none
+                      focus-visible:ring-2
+                      focus-visible:ring-orange-500
+                      focus-visible:ring-offset-2
+                    "
+                  >
+                    View My Work
+                  </Link>
+                </Reveal>
 
-                <Link
-                  href="/contact"
-                  className="
-                    inline-flex min-h-12 items-center justify-center
-                    rounded-sm border border-slate-900/20
-                    bg-white/45 px-6
-                    text-sm font-medium text-slate-900
-                    backdrop-blur-sm
-                    transition duration-300
-                    hover:-translate-y-0.5
-                    hover:border-orange-500
-                    hover:bg-white/80
-                    focus-visible:outline-none
-                    focus-visible:ring-2
-                    focus-visible:ring-orange-500
-                    focus-visible:ring-offset-2
-                  "
-                >
-                  Contact Me
-                </Link>
+                <Reveal trigger="mount" direction="left" delay={680} duration={700}>
+                  <Link
+                    href="/contact"
+                    className="
+                      inline-flex min-h-12 items-center justify-center
+                      rounded-sm border border-slate-900/20
+                      bg-white/45 px-6
+                      text-sm font-medium text-slate-900
+                      backdrop-blur-sm
+                      transition duration-300
+                      hover:-translate-y-0.5
+                      hover:border-orange-500
+                      hover:bg-white/80
+                      focus-visible:outline-none
+                      focus-visible:ring-2
+                      focus-visible:ring-orange-500
+                      focus-visible:ring-offset-2
+                    "
+                  >
+                    Contact Me
+                  </Link>
+                </Reveal>
               </div>
 
-              <nav
-                aria-label="Social media"
-                className="mt-8 sm:mt-10"
-              >
+              <nav aria-label="Social media" className="mt-8 sm:mt-10">
                 <ul className="flex flex-wrap items-center gap-1 sm:gap-2">
-                  {socialLinks.map((socialLink) => {
+                  {socialLinks.map((socialLink, index) => {
                     const Icon = socialLink.icon;
-                    const isExternal =
-                      socialLink.href.startsWith("http");
+                    const isExternal = socialLink.href.startsWith("http");
 
                     return (
                       <li key={socialLink.label}>
-                        <Link
-                          href={socialLink.href}
-                          aria-label={socialLink.label}
-                          target={isExternal ? "_blank" : undefined}
-                          rel={isExternal ? "noreferrer" : undefined}
-                          className="
-                            inline-flex size-11 items-center justify-center
-                            rounded-full text-slate-700
-                            transition duration-300
-                            hover:-translate-y-1
-                            hover:bg-white/60
-                            hover:text-orange-500
-                            focus-visible:outline-none
-                            focus-visible:ring-2
-                            focus-visible:ring-orange-500
-                          "
+                        <Reveal
+                          trigger="mount"
+                          direction="left"
+                          delay={760 + index * 70}
+                          duration={700}
                         >
-                          <Icon className="size-5" />
-                        </Link>
+                          <Link
+                            href={socialLink.href}
+                            aria-label={socialLink.label}
+                            target={isExternal ? "_blank" : undefined}
+                            rel={isExternal ? "noreferrer" : undefined}
+                            className="
+                              inline-flex size-11 items-center justify-center
+                              rounded-full text-slate-700
+                              transition duration-300
+                              hover:-translate-y-1
+                              hover:bg-white/60
+                              hover:text-orange-500
+                              focus-visible:outline-none
+                              focus-visible:ring-2
+                              focus-visible:ring-orange-500
+                            "
+                          >
+                            <Icon className="size-5" />
+                          </Link>
+                        </Reveal>
                       </li>
                     );
                   })}
