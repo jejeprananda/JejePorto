@@ -27,6 +27,10 @@ describe("Reveal component", () => {
     assert.match(source, /prefers-reduced-motion|motion-reduce/);
     assert.match(source, /threshold:\s*0\.12/);
     assert.match(source, /0px 0px -40px 0px/);
+    assert.match(source, /transition-\[opacity,translate,scale\]/);
+    assert.doesNotMatch(source, /transition-\[opacity,transform\]/);
+    assert.doesNotMatch(source, /function prefersReducedMotion/);
+    assert.match(source, /data-reveal/);
   });
 });
 
@@ -52,6 +56,9 @@ describe("WorksHero", () => {
     assert.match(page, /WorksHero/);
     assert.match(page, /from "@\/components\/sections\/WorksHero"/);
     assert.doesNotMatch(page, /bg-hero\.png/);
+    assert.match(page, /<noscript>/);
+    assert.match(page, /\[data-reveal\]/);
+    assert.match(page, /opacity:\s*1/);
   });
 });
 

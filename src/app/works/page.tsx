@@ -25,6 +25,16 @@ export default function WorksPage() {
 
   return (
     <main>
+      <noscript>
+        <style>{`
+          [data-reveal] {
+            opacity: 1 !important;
+            translate: 0 0 !important;
+            scale: 1 1 !important;
+            transition: none !important;
+          }
+        `}</style>
+      </noscript>
       <WorksHero />
       <ProjectsSection projects={projects} />
       <ServicesSection services={services} />
