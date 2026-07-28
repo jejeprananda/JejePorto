@@ -29,3 +29,28 @@ describe("Reveal component", () => {
     assert.match(source, /0px 0px -40px 0px/);
   });
 });
+
+describe("WorksHero", () => {
+  it("choreographs background, vertical line, and text on mount", () => {
+    const source = read("src/components/sections/WorksHero.tsx");
+
+    assert.match(source, /"use client"/);
+    assert.match(source, /export function WorksHero/);
+    assert.match(source, /from "@\/components\/shared\/Reveal"/);
+    assert.match(source, /trigger="mount"/);
+    assert.match(source, /direction="right"/);
+    assert.match(source, /direction="scaleY"/);
+    assert.match(source, /direction="left"/);
+    assert.match(source, /works-page-title/);
+    assert.match(source, /bg-hero\.png/);
+  });
+
+  it("works page uses WorksHero and keeps server metadata", () => {
+    const page = read("src/app/works/page.tsx");
+
+    assert.match(page, /export const metadata/);
+    assert.match(page, /WorksHero/);
+    assert.match(page, /from "@\/components\/sections\/WorksHero"/);
+    assert.doesNotMatch(page, /bg-hero\.png/);
+  });
+});
