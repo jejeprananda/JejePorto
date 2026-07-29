@@ -99,16 +99,30 @@ export function HeroSection() {
         className="absolute inset-0 -z-30"
       >
         <div className="absolute inset-0">
+          <div
+            aria-hidden="true"
+            className="
+              absolute inset-0 hidden bg-cover
+              bg-[url('/images/hero-poster.jpg')]
+              bg-[68%_center]
+              motion-reduce:block
+              sm:bg-[64%_center]
+              md:bg-[60%_center]
+              lg:bg-center
+            "
+          />
           <video
             autoPlay
             muted
             loop
             playsInline
+            poster="/images/hero-poster.jpg"
             aria-hidden="true"
             className="
               absolute inset-0 h-full w-full
               object-cover
               object-[68%_center]
+              motion-reduce:hidden
               sm:object-[64%_center]
               md:object-[60%_center]
               lg:object-center
