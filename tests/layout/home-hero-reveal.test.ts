@@ -23,7 +23,7 @@ describe("HeroSection mount reveals", () => {
     assert.match(source, /direction="left"/);
     assert.match(source, /distance="wide"/);
     assert.match(source, /hero-title/);
-    assert.match(source, /bg-hero\.png/);
+    assert.match(source, /\/videos\/hero\.mp4/);
     assert.match(source, /760 \+ index \* 70|760 \+ index\*70/);
     assert.match(source, /delay=\{600\}/);
     assert.match(source, /delay=\{680\}/);
