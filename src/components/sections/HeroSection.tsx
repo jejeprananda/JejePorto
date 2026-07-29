@@ -102,11 +102,9 @@ export function HeroSection() {
           <div
             aria-hidden="true"
             className="
-              absolute inset-0 hidden bg-cover
+              absolute inset-0 hidden bg-cover bg-center
               bg-[url('/images/hero-poster.jpg')]
-              bg-[68%_center]
               motion-reduce:block
-              sm:bg-[64%_center]
               md:bg-[60%_center]
               lg:bg-center
             "
@@ -120,16 +118,22 @@ export function HeroSection() {
             aria-hidden="true"
             className="
               absolute inset-0 h-full w-full
-              object-cover
-              object-[68%_center]
+              object-cover object-center
               motion-reduce:hidden
-              sm:object-[64%_center]
               md:object-[60%_center]
               lg:object-center
             "
           >
             <source src="/videos/hero.mp4" type="video/mp4" />
           </video>
+          <div
+            aria-hidden="true"
+            className="
+              absolute inset-0
+              bg-black/20 backdrop-blur-[2px]
+              md:hidden
+            "
+          />
         </div>
       </Reveal>
 
@@ -207,36 +211,45 @@ export function HeroSection() {
                 </p>
               </Reveal>
 
-              <Reveal trigger="mount" direction="left" delay={440} duration={700}>
-                <p
-                  lang="ja"
-                  className="
-                    mt-9 max-w-xl
-                    text-sm font-medium leading-7
-                    tracking-[0.08em]
-                    text-white/80
-                    hero-shadow-soft
-                    sm:text-base sm:leading-8
-                    lg:text-lg
-                  "
-                >
-                  デザインとコードで、アイデアをカタチにする。
-                </p>
-              </Reveal>
+              <div
+                className="
+                  mt-9 max-w-xl
+                  rounded-sm border border-white/20
+                  bg-black/30 px-4 py-3.5
+                  backdrop-blur-[3px]
+                  sm:px-5 sm:py-4
+                "
+              >
+                <Reveal trigger="mount" direction="left" delay={440} duration={700}>
+                  <p
+                    lang="ja"
+                    className="
+                      text-sm font-medium leading-7
+                      tracking-[0.08em]
+                      text-white/90
+                      hero-shadow-soft
+                      sm:text-base sm:leading-8
+                      lg:text-lg
+                    "
+                  >
+                    デザインとコードで、アイデアをカタチにする。
+                  </p>
+                </Reveal>
 
-              <Reveal trigger="mount" direction="left" delay={520} duration={700}>
-                <p
-                  className="
-                    mt-3 max-w-xl
-                    text-sm leading-7 text-white/80
-                    hero-shadow-soft
-                    sm:text-base
-                  "
-                >
-                  I design thoughtful interfaces and build them into fast,
-                  functional, and scalable digital products.
-                </p>
-              </Reveal>
+                <Reveal trigger="mount" direction="left" delay={520} duration={700}>
+                  <p
+                    className="
+                      mt-3
+                      text-sm leading-7 text-white/90
+                      hero-shadow-soft
+                      sm:text-base
+                    "
+                  >
+                    I design thoughtful interfaces and build them into fast,
+                    functional, and scalable digital products.
+                  </p>
+                </Reveal>
+              </div>
 
               <div className="mt-8 flex flex-wrap gap-3 sm:mt-9">
                 <Reveal trigger="mount" direction="left" delay={600} duration={700}>

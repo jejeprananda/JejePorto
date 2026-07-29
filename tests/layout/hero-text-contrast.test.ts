@@ -42,7 +42,18 @@ describe("Hero text contrast utilities", () => {
 
   it("does not reintroduce video overlay gradients in HeroSection", () => {
     assert.doesNotMatch(heroSource, /bg-gradient-/);
-    assert.doesNotMatch(heroSource, /bg-black\//);
+  });
+
+  it("uses full-bleed cover for the hero video including mobile", () => {
+    assert.match(heroSource, /object-cover/);
+    assert.match(heroSource, /object-center/);
+    assert.doesNotMatch(heroSource, /object-contain/);
+  });
+
+  it("applies a thin mobile-only blur scrim for text contrast", () => {
+    assert.match(heroSource, /bg-black\/20/);
+    assert.match(heroSource, /backdrop-blur-\[2px\]/);
+    assert.match(heroSource, /md:hidden/);
   });
 
   it("applies shadow utilities by hierarchy on hero copy", () => {
@@ -55,8 +66,14 @@ describe("Hero text contrast utilities", () => {
       heroSource,
       /text-3xl font-light leading-none tracking-\[-0\.035em\][\s\S]*?hero-shadow-soft/,
     );
-    assert.match(heroSource, /text-white\/80[\s\S]*?hero-shadow-soft/);
+    assert.match(heroSource, /text-white\/90[\s\S]*?hero-shadow-soft/);
     assert.match(heroSource, /text-orange-500/);
+  });
+
+  it("frames Japanese and supporting copy for readability", () => {
+    assert.match(heroSource, /bg-black\/30/);
+    assert.match(heroSource, /backdrop-blur-\[3px\]/);
+    assert.match(heroSource, /border-white\/20/);
   });
 
   it("applies soft shadow to secondary CTA and social icons", () => {
