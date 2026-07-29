@@ -33,4 +33,29 @@ describe("Hero text contrast utilities", () => {
     assert.doesNotMatch(heroSource, /bg-gradient-to-b/);
     assert.doesNotMatch(heroSource, /from-white/);
   });
+
+  it("applies shadow utilities by hierarchy on hero copy", () => {
+    assert.match(heroSource, /id="hero-title"[\s\S]*?hero-shadow-strong/);
+    assert.match(
+      heroSource,
+      /mt-5 text-2xl font-semibold[\s\S]*?hero-shadow-medium/,
+    );
+    assert.match(
+      heroSource,
+      /text-3xl font-light leading-none tracking-\[-0\.035em\][\s\S]*?hero-shadow-soft/,
+    );
+    assert.match(heroSource, /text-white\/80[\s\S]*?hero-shadow-soft/);
+    assert.match(heroSource, /text-orange-500/);
+  });
+
+  it("applies soft shadow to secondary CTA and social icons", () => {
+    assert.match(
+      heroSource,
+      /href="\/contact"[\s\S]*?className="[\s\S]*?hero-shadow-soft/,
+    );
+    assert.match(
+      heroSource,
+      /aria-label=\{socialLink\.label\}[\s\S]*?className="[\s\S]*?hero-shadow-soft/,
+    );
+  });
 });

@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
 
@@ -100,46 +99,23 @@ export function HeroSection() {
         className="absolute inset-0 -z-30"
       >
         <div className="absolute inset-0">
-          <Image
-            src="/images/bg-hero.png"
-            alt=""
-            fill
-            priority
-            sizes="100vw"
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            aria-hidden="true"
             className="
+              absolute inset-0 h-full w-full
               object-cover
               object-[68%_center]
               sm:object-[64%_center]
               md:object-[60%_center]
               lg:object-center
             "
-          />
-          <div
-            aria-hidden="true"
-            className="
-              absolute inset-0
-              bg-gradient-to-r
-              from-white
-              via-white/90
-              to-white/10
-              sm:via-white/75
-              lg:from-white/95
-              lg:via-white/45
-              lg:to-transparent
-            "
-          />
-          <div
-            aria-hidden="true"
-            className="
-              absolute inset-0
-              bg-gradient-to-b
-              from-white/75
-              via-white/20
-              to-white/10
-              lg:from-white/40
-              lg:via-transparent
-            "
-          />
+          >
+            <source src="/videos/hero.mp4" type="video/mp4" />
+          </video>
         </div>
       </Reveal>
 
@@ -161,7 +137,7 @@ export function HeroSection() {
               duration={700}
               className="
                 relative hidden w-px shrink-0 self-stretch overflow-hidden
-                bg-slate-900/80
+                bg-white/80
                 sm:block
               "
             >
@@ -175,7 +151,8 @@ export function HeroSection() {
                 <p
                   className="
                     text-3xl font-light leading-none tracking-[-0.035em]
-                    text-slate-800
+                    text-white
+                    hero-shadow-soft
                     sm:text-4xl
                     lg:text-[2.65rem]
                   "
@@ -192,7 +169,8 @@ export function HeroSection() {
                     text-[clamp(3.3rem,7.2vw,6rem)]
                     font-semibold leading-[0.88]
                     tracking-[-0.065em]
-                    text-slate-950
+                    text-white
+                    hero-shadow-strong
                   "
                 >
                   Jessy{" "}
@@ -205,7 +183,8 @@ export function HeroSection() {
                   className="
                     mt-5 text-2xl font-semibold
                     tracking-[-0.035em]
-                    text-slate-950
+                    text-white
+                    hero-shadow-medium
                     sm:text-3xl
                     lg:text-[2.35rem]
                   "
@@ -221,7 +200,8 @@ export function HeroSection() {
                     mt-9 max-w-xl
                     text-sm font-medium leading-7
                     tracking-[0.08em]
-                    text-slate-600
+                    text-white/80
+                    hero-shadow-soft
                     sm:text-base sm:leading-8
                     lg:text-lg
                   "
@@ -234,7 +214,8 @@ export function HeroSection() {
                 <p
                   className="
                     mt-3 max-w-xl
-                    text-sm leading-7 text-slate-600
+                    text-sm leading-7 text-white/80
+                    hero-shadow-soft
                     sm:text-base
                   "
                 >
@@ -268,14 +249,15 @@ export function HeroSection() {
                     href="/contact"
                     className="
                       inline-flex min-h-12 items-center justify-center
-                      rounded-sm border border-slate-900/20
-                      bg-white/45 px-6
-                      text-sm font-medium text-slate-900
+                      rounded-sm border border-white/40
+                      bg-white/10 px-6
+                      text-sm font-medium text-white
+                      hero-shadow-soft
                       backdrop-blur-sm
                       transition duration-300
                       hover:-translate-y-0.5
                       hover:border-orange-500
-                      hover:bg-white/80
+                      hover:bg-white/20
                       focus-visible:outline-none
                       focus-visible:ring-2
                       focus-visible:ring-orange-500
@@ -308,10 +290,11 @@ export function HeroSection() {
                             rel={isExternal ? "noreferrer" : undefined}
                             className="
                               inline-flex size-11 items-center justify-center
-                              rounded-full text-slate-700
+                              rounded-full text-white
+                              hero-shadow-soft
                               transition duration-300
                               hover:-translate-y-1
-                              hover:bg-white/60
+                              hover:bg-white/20
                               hover:text-orange-500
                               focus-visible:outline-none
                               focus-visible:ring-2
