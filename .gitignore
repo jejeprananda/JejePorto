@@ -45,3 +45,4 @@ next-env.d.ts
 
 # sqlite
 /data/*.db
+teamviewer_amd64.deb
