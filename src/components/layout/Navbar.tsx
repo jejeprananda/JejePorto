@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 import { Menu, X } from "lucide-react";
 
@@ -12,6 +13,8 @@ const navigationItems = [
 ] as const;
 
 export function Navbar() {
+  const pathname = usePathname();
+  const isDarkSurface = pathname === "/";
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -50,11 +53,21 @@ export function Navbar() {
           aria-label="Main navigation"
           className={[
             "flex h-20 w-full items-center justify-between transition-all duration-300 lg:h-16",
-            // Desktop floating glass shell
-            "lg:mt-5 lg:rounded-full lg:border lg:border-white/80 lg:px-8 xl:px-10",
-            "lg:bg-white/10 lg:backdrop-blur-md lg:shadow-[0_8px_32px_rgb(0_0_0_/_0.12)]",
-            isScrolled && "lg:bg-white/15",
-          ].join(" ")}
+            "lg:mt-5 lg:rounded-full lg:border lg:px-8 lg:backdrop-blur-md xl:px-10",
+            "lg:shadow-[0_8px_32px_rgb(0_0_0_/_0.12)]",
+            isDarkSurface
+              ? [
+                  "lg:border-white/80 lg:bg-white/10",
+                  isScrolled && "lg:bg-white/15",
+                ]
+              : [
+                  "lg:border-slate-900/15 lg:bg-white/70",
+                  isScrolled && "lg:bg-white/85",
+                ],
+          ]
+            .flat()
+            .filter(Boolean)
+            .join(" ")}
         >
           <Link
             href="/"
@@ -62,7 +75,9 @@ export function Navbar() {
             onClick={closeMenu}
             className={[
               "relative z-50 text-2xl font-bold tracking-[-0.06em] transition-opacity hover:opacity-70 sm:text-3xl",
-              isMenuOpen ? "text-slate-900" : "text-slate-900 lg:text-white",
+              isMenuOpen || !isDarkSurface
+                ? "text-slate-900"
+                : "text-slate-900 lg:text-white",
             ].join(" ")}
           >
             JP<span className="text-orange-500">.</span>
@@ -73,16 +88,17 @@ export function Navbar() {
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="
-                    relative py-2 text-sm font-medium text-white/90
-                    transition-colors duration-300
-                    after:absolute after:inset-x-0 after:bottom-0 after:h-px
-                    after:origin-right after:scale-x-0 after:bg-orange-500
-                    after:transition-transform after:duration-300
-                    hover:text-white
-                    hover:after:origin-left hover:after:scale-x-100
-                    xl:text-base
-                  "
+                  className={[
+                    "relative py-2 text-sm font-medium transition-colors duration-300",
+                    "after:absolute after:inset-x-0 after:bottom-0 after:h-px",
+                    "after:origin-right after:scale-x-0 after:bg-orange-500",
+                    "after:transition-transform after:duration-300",
+                    "hover:after:origin-left hover:after:scale-x-100",
+                    "xl:text-base",
+                    isDarkSurface
+                      ? "text-white/90 hover:text-white"
+                      : "text-slate-700 hover:text-slate-950",
+                  ].join(" ")}
                 >
                   {item.label}
                 </Link>
