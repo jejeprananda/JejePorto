@@ -41,12 +41,15 @@ describe("WorksHero", () => {
     assert.match(source, /"use client"/);
     assert.match(source, /export function WorksHero/);
     assert.match(source, /from "@\/components\/shared\/Reveal"/);
+    assert.match(source, /from "@\/components\/shared\/Snowfall"/);
     assert.match(source, /trigger="mount"/);
     assert.match(source, /direction="right"/);
     assert.match(source, /direction="scaleY"/);
     assert.match(source, /direction="left"/);
     assert.match(source, /works-page-title/);
     assert.match(source, /bg-hero\.png/);
+    assert.match(source, /pointer-events-none absolute inset-0 -z-10/);
+    assert.match(source, /<Snowfall\s*\/>/);
   });
 
   it("works page uses WorksHero and keeps server metadata", () => {

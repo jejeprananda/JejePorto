@@ -6,6 +6,7 @@ import Link from "next/link";
 import { ArrowDownRight } from "lucide-react";
 
 import { Reveal } from "@/components/shared/Reveal";
+import { Snowfall } from "@/components/shared/Snowfall";
 
 export function WorksHero() {
   return (
@@ -39,6 +40,13 @@ export function WorksHero() {
           />
         </div>
       </Reveal>
+
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-10 motion-reduce:hidden"
+      >
+        <Snowfall />
+      </div>
 
       <div className="mx-auto flex min-h-[520px] w-full max-w-[1440px] items-center px-5 pb-16 pt-28 sm:px-8 sm:pt-32 lg:px-12 lg:pt-36 xl:px-16">
         <div className="flex max-w-3xl gap-5 sm:gap-8">

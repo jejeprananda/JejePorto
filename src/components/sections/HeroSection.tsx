@@ -102,7 +102,7 @@ export function HeroSection() {
           <div
             aria-hidden="true"
             className="
-              absolute inset-0 hidden bg-cover bg-center
+              absolute inset-0 hidden bg-cover bg-[30%_center]
               bg-[url('/images/hero-poster.jpg')]
               motion-reduce:block
               md:bg-[60%_center]
@@ -118,7 +118,7 @@ export function HeroSection() {
             aria-hidden="true"
             className="
               absolute inset-0 h-full w-full
-              object-cover object-center
+              object-cover object-[30%_center]
               motion-reduce:hidden
               md:object-[60%_center]
               lg:object-center
@@ -126,14 +126,6 @@ export function HeroSection() {
           >
             <source src="/videos/hero.mp4" type="video/mp4" />
           </video>
-          <div
-            aria-hidden="true"
-            className="
-              absolute inset-0
-              bg-black/20 backdrop-blur-[2px]
-              md:hidden
-            "
-          />
         </div>
       </Reveal>
 
@@ -160,7 +152,7 @@ export function HeroSection() {
               "
             >
               <div aria-hidden="true" className="relative h-full w-full">
-                <span className="absolute bottom-0 left-0 h-20 w-px bg-orange-500" />
+                <span className="absolute bottom-0 left-0 h-20 w-px bg-purple-950" />
               </div>
             </Reveal>
 
@@ -170,7 +162,6 @@ export function HeroSection() {
                   className="
                     text-3xl font-light leading-none tracking-[-0.035em]
                     text-white
-                    hero-shadow-soft
                     sm:text-4xl
                     lg:text-[2.65rem]
                   "
@@ -188,11 +179,10 @@ export function HeroSection() {
                     font-semibold leading-[0.88]
                     tracking-[-0.065em]
                     text-white
-                    hero-shadow-strong
                   "
                 >
                   Jessy{" "}
-                  <span className="text-orange-500">Prananda</span>
+                  <span className="text-purple-950">Prananda</span>
                 </h1>
               </Reveal>
 
@@ -202,7 +192,6 @@ export function HeroSection() {
                     mt-5 text-2xl font-semibold
                     tracking-[-0.035em]
                     text-white
-                    hero-shadow-medium
                     sm:text-3xl
                     lg:text-[2.35rem]
                   "
@@ -211,23 +200,14 @@ export function HeroSection() {
                 </p>
               </Reveal>
 
-              <div
-                className="
-                  mt-9 max-w-xl
-                  rounded-sm border border-white/20
-                  bg-black/30 px-4 py-3.5
-                  backdrop-blur-[3px]
-                  sm:px-5 sm:py-4
-                "
-              >
+              <div className="mt-9 max-w-xl">
                 <Reveal trigger="mount" direction="left" delay={440} duration={700}>
                   <p
                     lang="ja"
                     className="
                       text-sm font-medium leading-7
                       tracking-[0.08em]
-                      text-white/90
-                      hero-shadow-soft
+                      text-purple-950
                       sm:text-base sm:leading-8
                       lg:text-lg
                     "
@@ -240,8 +220,7 @@ export function HeroSection() {
                   <p
                     className="
                       mt-3
-                      text-sm leading-7 text-white/90
-                      hero-shadow-soft
+                      text-sm leading-7 text-purple-950
                       sm:text-base
                     "
                   >
@@ -257,13 +236,13 @@ export function HeroSection() {
                     href="/works"
                     className="
                       inline-flex min-h-12 items-center justify-center
-                      rounded-sm bg-slate-950 px-6
+                      rounded-sm bg-purple-950 px-6
                       text-sm font-medium text-white
                       transition duration-300
-                      hover:-translate-y-0.5 hover:bg-slate-800
+                      hover:-translate-y-0.5 hover:bg-purple-900
                       focus-visible:outline-none
                       focus-visible:ring-2
-                      focus-visible:ring-orange-500
+                      focus-visible:ring-purple-950
                       focus-visible:ring-offset-2
                     "
                   >
@@ -279,7 +258,6 @@ export function HeroSection() {
                       rounded-sm border border-white/40
                       bg-white/10 px-6
                       text-sm font-medium text-white
-                      hero-shadow-soft
                       backdrop-blur-sm
                       transition duration-300
                       hover:-translate-y-0.5
@@ -318,7 +296,6 @@ export function HeroSection() {
                             className="
                               inline-flex size-11 items-center justify-center
                               rounded-full text-white
-                              hero-shadow-soft
                               transition duration-300
                               hover:-translate-y-1
                               hover:bg-white/20

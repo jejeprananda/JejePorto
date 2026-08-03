@@ -3,7 +3,9 @@ import type { Metadata } from "next";
 import { HeroSection } from "@/components/sections/HeroSection";
 
 export const metadata: Metadata = {
-  title: "About",
+  title: {
+    absolute: "Jessy Prananda Ismail",
+  },
   description:
     "Jessy Prananda — Fullstack Designer. Portfolio home and introduction.",
 };
