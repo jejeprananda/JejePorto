@@ -8,7 +8,7 @@ import { Menu, X } from "lucide-react";
 
 const navigationItems = [
   { label: "About", href: "/" },
-  { label: "Works", href: "/works" },
+  { label: "Works", href: "/" },
   { label: "Contact", href: "/contact" },
 ] as const;
 
@@ -85,7 +85,7 @@ export function Navbar() {
 
           <ul className="hidden items-center gap-8 lg:flex xl:gap-12">
             {navigationItems.map((item) => (
-              <li key={item.href}>
+              <li key={item.label}>
                 <Link
                   href={item.href}
                   className={[
@@ -134,7 +134,7 @@ export function Navbar() {
       >
         <ul>
           {navigationItems.map((item, index) => (
-            <li key={item.href} className="border-b border-slate-900/10">
+            <li key={item.label} className="border-b border-slate-900/10">
               <Link
                 href={item.href}
                 onClick={closeMenu}

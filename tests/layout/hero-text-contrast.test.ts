@@ -5,45 +5,52 @@ import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "../..");
-const globalsSource = readFileSync(
-  join(root, "src/app/globals.css"),
-  "utf8",
-);
-const heroSource = readFileSync(
-  join(root, "src/components/sections/HeroSection.tsx"),
+const source = readFileSync(
+  join(root, "src/components/ui/scroll-expansion-hero.tsx"),
   "utf8",
 );
 
-describe("Hero text contrast utilities", () => {
-  it("does not define hero text-shadow utility classes", () => {
-    assert.doesNotMatch(globalsSource, /\.hero-shadow-strong\s*\{/);
-    assert.doesNotMatch(globalsSource, /\.hero-shadow-medium\s*\{/);
-    assert.doesNotMatch(globalsSource, /\.hero-shadow-soft\s*\{/);
+describe("ScrollExpandMedia hero", () => {
+  it("uses premium glassmorphism card styles without a photo", () => {
+    assert.match(source, /premium-hero-card/);
+    assert.match(source, /rgba\(255,255,255,0\.04\)/);
+    assert.match(source, /blur\(24px\)/);
+    assert.match(source, /rgba\(255,255,255,0\.12\)/);
+    assert.match(source, /0 30px 80px rgba\(0,0,0,0\.25\)/);
+    assert.doesNotMatch(source, /profile-big\.png/);
+    assert.doesNotMatch(source, /CARD_AURORA_GRADIENT/);
   });
 
-  it("does not reintroduce video overlay gradients in HeroSection", () => {
-    assert.doesNotMatch(heroSource, /bg-gradient-/);
+  it("uses premium glass content without right-side watermark", () => {
+    assert.match(source, /premium-hero-card/);
+    assert.match(source, /h-px w-full bg-white/);
+    assert.doesNotMatch(source, /\bJP\b/);
+    assert.doesNotMatch(source, /w-\[42%\]/);
   });
 
-  it("uses full-bleed cover for the hero video including mobile", () => {
-    assert.match(heroSource, /object-cover/);
-    assert.match(heroSource, /object-center/);
-    assert.doesNotMatch(heroSource, /object-contain/);
+  it("renders the premium typography hierarchy", () => {
+    assert.match(source, /Hello, I&apos;m/);
+    assert.match(source, /font-bold text-white/);
+    assert.match(source, /from-\[#ff8a00\] to-\[#ff5e00\]/);
+    assert.doesNotMatch(source, /Explore My Work/);
+    assert.match(source, /Building digital experiences/);
   });
 
-  it("does not apply a mobile blur scrim over the hero video", () => {
-    assert.doesNotMatch(heroSource, /bg-black\/20/);
-    assert.doesNotMatch(heroSource, /backdrop-blur-\[2px\]/);
+  it("styles scroll-to-explore with a bouncing down arrow", () => {
+    assert.match(source, /ArrowDown/);
+    assert.match(source, /tracking-\[0\.28em\]/);
+    assert.match(source, /y:\s*\[0,\s*6,\s*0\]/);
   });
 
-  it("does not apply text-shadow utilities on hero copy", () => {
-    assert.doesNotMatch(heroSource, /hero-shadow-/);
-    assert.match(heroSource, /text-purple-950/);
+  it("uses a wider premium desktop card while keeping mobile base size", () => {
+    assert.match(source, /isMobileState \? 320 : 700/);
+    assert.match(source, /isMobileState \? 480 : 420/);
   });
 
-  it("does not frame Japanese and supporting copy", () => {
-    assert.doesNotMatch(heroSource, /bg-black\/30/);
-    assert.doesNotMatch(heroSource, /backdrop-blur-\[3px\]/);
-    assert.doesNotMatch(heroSource, /border-white\/20/);
+  it("reveals card video as scroll progresses", () => {
+    assert.match(source, /opacity:\s*scrollProgress/);
+    assert.match(source, /mediaVideoRef/);
+    assert.match(source, /video\.play\(\)/);
+    assert.match(source, /video\.pause\(\)/);
   });
 });
