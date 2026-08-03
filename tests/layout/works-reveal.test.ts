@@ -34,31 +34,14 @@ describe("Reveal component", () => {
   });
 });
 
-describe("WorksHero", () => {
-  it("choreographs background, vertical line, and text on mount", () => {
-    const source = read("src/components/sections/WorksHero.tsx");
-
-    assert.match(source, /"use client"/);
-    assert.match(source, /export function WorksHero/);
-    assert.match(source, /from "@\/components\/shared\/Reveal"/);
-    assert.match(source, /trigger="mount"/);
-    assert.match(source, /direction="right"/);
-    assert.match(source, /direction="scaleY"/);
-    assert.match(source, /direction="left"/);
-    assert.match(source, /works-page-title/);
-    assert.match(source, /bg-hero\.png/);
-  });
-
-  it("works page uses WorksHero and keeps server metadata", () => {
+describe("Works page redirect", () => {
+  it("redirects /works to the combined home page", () => {
     const page = read("src/app/works/page.tsx");
 
-    assert.match(page, /export const metadata/);
-    assert.match(page, /WorksHero/);
-    assert.match(page, /from "@\/components\/sections\/WorksHero"/);
-    assert.doesNotMatch(page, /bg-hero\.png/);
-    assert.match(page, /<noscript>/);
-    assert.match(page, /\[data-reveal\]/);
-    assert.match(page, /opacity:\s*1/);
+    assert.match(page, /from "next\/navigation"/);
+    assert.match(page, /redirect\("\/"\)/);
+    assert.doesNotMatch(page, /WorksHero/);
+    assert.doesNotMatch(page, /ProjectsSection/);
   });
 });
 
@@ -87,7 +70,7 @@ describe("ServicesSection reveals", () => {
   });
 });
 
-describe("StackSection and Works CTA reveals", () => {
+describe("StackSection and home CTA reveals", () => {
   it("wraps stack header and groups with scroll Reveal", () => {
     const source = read("src/components/sections/StackSection.tsx");
 
@@ -97,8 +80,8 @@ describe("StackSection and Works CTA reveals", () => {
     assert.match(source, /120 \+ index \* 80|120 \+ index\*80/);
   });
 
-  it("reveals CTA copy then contact button", () => {
-    const page = read("src/app/works/page.tsx");
+  it("reveals CTA copy then contact button on home", () => {
+    const page = read("src/app/page.tsx");
 
     assert.match(page, /from "@\/components\/shared\/Reveal"/);
     assert.match(page, /Start a project/);

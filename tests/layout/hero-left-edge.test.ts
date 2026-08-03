@@ -5,29 +5,21 @@ import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "../..");
-const heroSource = readFileSync(
-  join(root, "src/components/sections/HeroSection.tsx"),
+const source = readFileSync(
+  join(root, "src/components/ui/scroll-expansion-hero.tsx"),
   "utf8",
 );
 
-describe("HeroSection left-edge layout", () => {
-  it("uses asymmetric left/right padding without centered max-width container", () => {
-    assert.match(heroSource, /\bpl-5\b/);
-    assert.match(heroSource, /\bsm:pl-4\b/);
-    assert.match(heroSource, /\bpr-5\b/);
-    assert.match(heroSource, /\bsm:pr-8\b/);
-
-    assert.doesNotMatch(
-      heroSource,
-      /mx-auto flex min-h-dvh w-full max-w-\[1440px\]/,
-    );
-    assert.doesNotMatch(
-      heroSource,
-      /px-5 pb-14 pt-28[\s\S]*sm:px-8[\s\S]*lg:px-12[\s\S]*xl:px-16/,
-    );
+describe("ScrollExpandMedia layout", () => {
+  it("centers the expanding media stage in the viewport", () => {
+    assert.match(source, /top-1\/2/);
+    assert.match(source, /left-1\/2/);
+    assert.match(source, /translate\(-50%, -50%\)/);
+    assert.match(source, /maxWidth:\s*"95vw"/);
   });
 
-  it("keeps the inner text column max width", () => {
-    assert.match(heroSource, /className="w-full max-w-\[760px\]"/);
+  it("exports ScrollExpandMedia as the default UI component", () => {
+    assert.match(source, /export default ScrollExpandMedia/);
+    assert.match(source, /"use client"/);
   });
 });

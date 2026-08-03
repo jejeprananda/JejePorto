@@ -10,36 +10,39 @@ function read(rel: string) {
   return readFileSync(join(root, rel), "utf8");
 }
 
-describe("HeroSection mount reveals", () => {
-  it("choreographs background, line, text, CTAs, and staggered socials on mount", () => {
-    const source = read("src/components/sections/HeroSection.tsx");
+describe("HomeScrollExpand", () => {
+  it("mounts ScrollExpandMedia with local hero video assets", () => {
+    const source = read("src/components/sections/HomeScrollExpand.tsx");
 
     assert.match(source, /"use client"/);
-    assert.match(source, /export function HeroSection/);
-    assert.match(source, /from "@\/components\/shared\/Reveal"/);
-    assert.match(source, /trigger="mount"/);
-    assert.match(source, /direction="right"/);
-    assert.match(source, /direction="scaleY"/);
-    assert.match(source, /direction="left"/);
-    assert.match(source, /distance="wide"/);
-    assert.match(source, /hero-title/);
+    assert.match(source, /export function HomeScrollExpand/);
+    assert.match(
+      source,
+      /from "@\/components\/ui\/scroll-expansion-hero"/,
+    );
+    assert.match(source, /mediaType="video"/);
     assert.match(source, /\/videos\/hero\.mp4/);
-    assert.match(source, /object-cover/);
-    assert.match(source, /object-center/);
-    assert.doesNotMatch(source, /object-contain/);
-    assert.match(source, /760 \+ index \* 70|760 \+ index\*70/);
-    assert.match(source, /delay=\{600\}/);
-    assert.match(source, /delay=\{680\}/);
+    assert.match(source, /\/images\/hero-poster\.jpg/);
+    assert.match(source, /\/videos\/hero-bg\.mp4/);
+    assert.match(source, /Jessy Prananda/);
+    assert.match(source, /Fullstack Developer/);
+    assert.match(source, /Scroll to explore/);
+    assert.doesNotMatch(source, /motto/);
   });
 });
 
 describe("Home page boundary", () => {
-  it("keeps server metadata and adds data-reveal noscript fallback", () => {
+  it("keeps server metadata and composes expand hero with works sections", () => {
     const page = read("src/app/page.tsx");
 
     assert.match(page, /export const metadata/);
     assert.doesNotMatch(page, /"use client"/);
-    assert.match(page, /HeroSection/);
+    assert.match(page, /absolute:\s*"Jessy Prananda Ismail"/);
+    assert.match(page, /HomeScrollExpand/);
+    assert.match(page, /ProjectsSection/);
+    assert.match(page, /ServicesSection/);
+    assert.match(page, /StackSection/);
+    assert.match(page, /Start a project/);
     assert.match(page, /<noscript>/);
     assert.match(page, /\[data-reveal\]/);
   });
