@@ -11,29 +11,11 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 
-import { ContributionGraph } from "@/components/ui/contribution-graph";
-import type { GitHubStats } from "@/services/github/getGitHubStats";
-
-type HeroCardContentProps = {
-  github?: GitHubStats;
-  monthsToShow: number;
-};
-
-const HeroCardContent = memo(function HeroCardContent({
-  github,
-  monthsToShow,
-}: HeroCardContentProps) {
+const HeroCardContent = memo(function HeroCardContent() {
   return (
     <div className="relative flex h-full w-full">
-      <div
-        className="
-          relative z-10 flex h-full w-full flex-col items-center justify-center
-          gap-8 px-6 py-7
-          sm:gap-10 sm:px-9 sm:py-9
-          md:flex-row md:items-center md:justify-between
-        "
-      >
-        <div className="flex shrink-0 flex-col items-center text-center md:items-start md:text-left">
+      <div className="relative z-10 flex h-full w-full flex-col items-center justify-center px-6 py-7 sm:px-9 sm:py-9">
+        <div className="flex flex-col items-center text-center md:items-start md:text-left">
           <motion.h2
             className="text-[36px] leading-[0.92] font-bold tracking-[-0.04em] text-white sm:text-[48px] lg:text-[56px]"
             initial={{ opacity: 0, y: 14 }}
@@ -43,7 +25,12 @@ const HeroCardContent = memo(function HeroCardContent({
             Jessy
           </motion.h2>
           <motion.h2
-            className="bg-gradient-to-r from-[#ff8a00] to-[#ff5e00] bg-clip-text text-[36px] leading-[0.92] font-bold tracking-[-0.04em] text-transparent sm:text-[48px] lg:text-[56px]"
+            className="
+              bg-gradient-to-r from-[#ff8a00] to-[#ff5e00] bg-clip-text
+              text-[36px] leading-[0.92] font-bold tracking-[-0.04em] text-transparent
+              sm:text-[48px] lg:text-[56px]
+              md:bg-none md:text-purple-950
+            "
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.22, duration: 0.5, ease: "easeOut" }}
@@ -59,28 +46,25 @@ const HeroCardContent = memo(function HeroCardContent({
           >
             Fullstack Developer
           </motion.p>
-        </div>
 
-        {github && github.contributions.length > 0 ? (
           <motion.div
-            className="
-              mx-auto min-w-0 w-full max-w-[min(100%,360px)]
-              rounded-2xl border border-white/15
-              bg-[#0d1117]/92 px-3 py-3
-              sm:px-4 sm:py-4
-              md:mx-0 md:max-w-[320px] lg:max-w-[360px]
-            "
+            className="mt-6 h-px w-full bg-white md:max-w-[280px]"
+            initial={{ opacity: 0, scaleX: 0.4 }}
+            animate={{ opacity: 1, scaleX: 1 }}
+            transition={{ delay: 0.34, duration: 0.45, ease: "easeOut" }}
+            style={{ transformOrigin: "left center" }}
+          />
+
+          <motion.p
+            className="mt-5 max-w-[280px] text-base leading-7 text-white/75 sm:max-w-[320px] sm:text-lg sm:leading-8"
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.28, duration: 0.5, ease: "easeOut" }}
+            transition={{ delay: 0.4, duration: 0.5, ease: "easeOut" }}
           >
-            <ContributionGraph
-              contributions={github.contributions}
-              profileUrl={github.profileUrl}
-              monthsToShow={monthsToShow}
-            />
-          </motion.div>
-        ) : null}
+            Building digital experiences with clean code and modern
+            technologies.
+          </motion.p>
+        </div>
       </div>
     </div>
   );
@@ -95,7 +79,6 @@ interface ScrollExpandMediaProps {
   date?: string;
   scrollToExpand?: string;
   textBlend?: boolean;
-  github?: GitHubStats;
   children?: ReactNode;
 }
 
@@ -107,7 +90,6 @@ const ScrollExpandMedia = ({
   title,
   date,
   scrollToExpand,
-  github,
   children,
 }: ScrollExpandMediaProps) => {
   const [scrollProgress, setScrollProgress] = useState<number>(0);
@@ -120,8 +102,6 @@ const ScrollExpandMedia = ({
   const mediaFullyExpandedRef = useRef(false);
   const touchStartYRef = useRef(0);
   const scrollRafRef = useRef<number | null>(null);
-
-  const contributionMonths = isMobileState ? 3 : 4;
 
   const commitScrollProgress = (nextProgress: number) => {
     scrollProgressRef.current = nextProgress;
@@ -349,10 +329,7 @@ const ScrollExpandMedia = ({
                     pointerEvents: scrollProgress > 0.5 ? "none" : "auto",
                   }}
                 >
-                  <HeroCardContent
-                    github={github}
-                    monthsToShow={contributionMonths}
-                  />
+                  <HeroCardContent />
                 </div>
 
                 {mediaType === "video" ? (

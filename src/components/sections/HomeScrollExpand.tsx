@@ -3,14 +3,12 @@
 import { useEffect, type ReactNode } from "react";
 
 import ScrollExpandMedia from "@/components/ui/scroll-expansion-hero";
-import type { GitHubStats } from "@/services/github/getGitHubStats";
 
 type HomeScrollExpandProps = {
   children: ReactNode;
-  github: GitHubStats;
 };
 
-export function HomeScrollExpand({ children, github }: HomeScrollExpandProps) {
+export function HomeScrollExpand({ children }: HomeScrollExpandProps) {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -25,7 +23,6 @@ export function HomeScrollExpand({ children, github }: HomeScrollExpandProps) {
       date="Fullstack Developer"
       scrollToExpand="Scroll to explore"
       textBlend
-      github={github}
     >
       {children}
     </ScrollExpandMedia>

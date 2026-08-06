@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 
 import { HomeScrollExpand } from "@/components/sections/HomeScrollExpand";
+import { GitHubActivitySection } from "@/components/sections/GitHubActivitySection";
 import { ProjectsSection } from "@/components/sections/ProjectsSection";
 import { ServicesSection } from "@/components/sections/ServicesSection";
 import { StackSection } from "@/components/sections/StackSection";
@@ -42,7 +43,8 @@ export default async function HomePage() {
         `}</style>
       </noscript>
 
-      <HomeScrollExpand github={githubStats}>
+      <HomeScrollExpand>
+        <GitHubActivitySection github={githubStats} />
         <ProjectsSection projects={projects} />
         <ServicesSection services={services} />
         <StackSection groups={stackGroups} />
