@@ -9,6 +9,10 @@ const source = readFileSync(
   join(root, "src/components/ui/scroll-expansion-hero.tsx"),
   "utf8",
 );
+const graphSource = readFileSync(
+  join(root, "src/components/ui/contribution-graph.tsx"),
+  "utf8",
+);
 
 describe("ScrollExpandMedia hero", () => {
   it("uses premium glassmorphism card styles without a photo", () => {
@@ -23,28 +27,34 @@ describe("ScrollExpandMedia hero", () => {
 
   it("uses premium glass content without right-side watermark", () => {
     assert.match(source, /premium-hero-card/);
-    assert.match(source, /h-px w-full bg-white/);
+    assert.match(source, /ContributionGraph/);
     assert.doesNotMatch(source, /\bJP\b/);
     assert.doesNotMatch(source, /w-\[42%\]/);
   });
 
-  it("renders the premium typography hierarchy", () => {
-    assert.match(source, /Hello, I&apos;m/);
-    assert.match(source, /font-bold text-white/);
+  it("renders identity plus GitHub contribution graph", () => {
+    assert.match(source, /Jessy/);
+    assert.match(source, /Fullstack Developer/);
     assert.match(source, /from-\[#ff8a00\] to-\[#ff5e00\]/);
+    assert.match(source, /ContributionGraph/);
+    assert.match(graphSource, /GitHub Commit Activity/);
+    assert.match(source, /monthsToShow={contributionMonths}/);
+    assert.match(source, /contributionMonths = isMobileState \? 3 : 4/);
+    assert.match(source, /mx-auto/);
+    assert.match(graphSource, /monthsToShow/);
+    assert.match(graphSource, /formatMonthsLabel/);
     assert.doesNotMatch(source, /Explore My Work/);
-    assert.match(source, /Building digital experiences/);
   });
 
   it("styles scroll-to-explore with a bouncing down arrow", () => {
     assert.match(source, /ArrowDown/);
     assert.match(source, /tracking-\[0\.28em\]/);
-    assert.match(source, /y:\s*\[0,\s*6,\s*0\]/);
+    assert.match(source, /animate-bounce/);
   });
 
   it("uses a wider premium desktop card while keeping mobile base size", () => {
-    assert.match(source, /isMobileState \? 320 : 700/);
-    assert.match(source, /isMobileState \? 480 : 420/);
+    assert.match(source, /isMobileState \? 320 : 860/);
+    assert.match(source, /isMobileState \? 520 : 440/);
   });
 
   it("reveals card video as scroll progresses", () => {

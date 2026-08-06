@@ -9,6 +9,7 @@ import { ServicesSection } from "@/components/sections/ServicesSection";
 import { StackSection } from "@/components/sections/StackSection";
 import { Reveal } from "@/components/shared/Reveal";
 import { getServices } from "@/services/catalog/getServices";
+import { getGitHubStats } from "@/services/github/getGitHubStats";
 import { getProjects } from "@/services/projects/getProjects";
 import { getStackGroups } from "@/services/stack/getStackGroups";
 
@@ -20,10 +21,13 @@ export const metadata: Metadata = {
     "Jessy Prananda — Fullstack Designer. Portfolio, selected works, and introduction.",
 };
 
-export default function HomePage() {
-  const projects = getProjects();
-  const services = getServices();
-  const stackGroups = getStackGroups();
+export default async function HomePage() {
+  const [projects, services, stackGroups, githubStats] = await Promise.all([
+    Promise.resolve(getProjects()),
+    Promise.resolve(getServices()),
+    Promise.resolve(getStackGroups()),
+    getGitHubStats(),
+  ]);
 
   return (
     <main>
@@ -38,7 +42,7 @@ export default function HomePage() {
         `}</style>
       </noscript>
 
-      <HomeScrollExpand>
+      <HomeScrollExpand github={githubStats}>
         <ProjectsSection projects={projects} />
         <ServicesSection services={services} />
         <StackSection groups={stackGroups} />
