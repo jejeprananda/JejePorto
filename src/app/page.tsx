@@ -3,12 +3,14 @@ import Link from "next/link";
 
 import { ArrowUpRight } from "lucide-react";
 
+import { CvSection } from "@/components/sections/CvSection";
 import { HomeScrollExpand } from "@/components/sections/HomeScrollExpand";
 import { ProjectsSection } from "@/components/sections/ProjectsSection";
 import { ServicesSection } from "@/components/sections/ServicesSection";
 import { StackSection } from "@/components/sections/StackSection";
 import { Reveal } from "@/components/shared/Reveal";
 import { getServices } from "@/services/catalog/getServices";
+import { getCvData } from "@/services/cv/getCvData";
 import { getProjects } from "@/services/projects/getProjects";
 import { getStackGroups } from "@/services/stack/getStackGroups";
 
@@ -24,6 +26,7 @@ export default function HomePage() {
   const projects = getProjects();
   const services = getServices();
   const stackGroups = getStackGroups();
+  const cvData = getCvData();
 
   return (
     <main>
@@ -79,6 +82,8 @@ export default function HomePage() {
             </div>
           </div>
         </section>
+
+        <CvSection data={cvData} />
       </HomeScrollExpand>
     </main>
   );
