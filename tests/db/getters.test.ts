@@ -7,6 +7,7 @@ import { getProjectBySlug } from "../../src/services/projects/getProjectBySlug";
 import { getProjects } from "../../src/services/projects/getProjects";
 import { getServices } from "../../src/services/catalog/getServices";
 import { getStackGroups } from "../../src/services/stack/getStackGroups";
+import { getCvData } from "../../src/services/cv/getCvData";
 
 describe("portfolio sqlite getters", () => {
   before(async () => {
@@ -101,5 +102,36 @@ describe("portfolio sqlite getters", () => {
     assert.equal(groups.length, 4);
     assert.equal(groups[0]?.title, "Frontend");
     assert.ok(groups[0]?.technologies.includes("Next.js"));
+  });
+
+  it("aggregates CV data from the portfolio", () => {
+    const cv = getCvData();
+
+    assert.equal(cv.name, "Jessy Prananda Ismail");
+    assert.ok(cv.headline.length > 0);
+    assert.ok(cv.summary.length > 40);
+
+    const projects = getProjects();
+    assert.equal(cv.experience.length, projects.length);
+    assert.deepEqual(
+      cv.experience.map((item) => item.slug),
+      projects.map((project) => project.slug),
+    );
+
+    const sakti = cv.experience[0];
+    assert.equal(sakti?.title, "SAKTI");
+    assert.equal(sakti?.role, "Frontend Developer");
+    assert.ok(sakti?.tech.includes("Angular"));
+    assert.ok((sakti?.highlights.length ?? 0) > 0);
+
+    const frontend = cv.skills.find((group) => group.title === "Frontend");
+    assert.ok(frontend);
+    assert.ok(frontend.skills.includes("Next.js"));
+
+    const emails = cv.contacts.filter((contact) => contact.label === "Email");
+    assert.equal(emails.length, 1);
+    assert.match(emails[0]?.href ?? "", /^mailto:/);
+
+    assert.ok(cv.services.length >= 1);
   });
 });
