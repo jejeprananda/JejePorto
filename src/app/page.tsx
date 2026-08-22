@@ -10,7 +10,6 @@ import { ServicesSection } from "@/components/sections/ServicesSection";
 import { StackSection } from "@/components/sections/StackSection";
 import { Reveal } from "@/components/shared/Reveal";
 import { getServices } from "@/services/catalog/getServices";
-import { getCvData } from "@/services/cv/getCvData";
 import { getProjects } from "@/services/projects/getProjects";
 import { getStackGroups } from "@/services/stack/getStackGroups";
 
@@ -26,8 +25,6 @@ export default function HomePage() {
   const projects = getProjects();
   const services = getServices();
   const stackGroups = getStackGroups();
-  const cvData = getCvData();
-
   return (
     <main>
       <noscript>
@@ -83,7 +80,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        <CvSection data={cvData} />
+        <CvSection />
       </HomeScrollExpand>
     </main>
   );
