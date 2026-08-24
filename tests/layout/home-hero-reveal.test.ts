@@ -42,5 +42,8 @@ describe("Home page boundary", () => {
     assert.match(page, /ServicesSection/);
     assert.match(page, /StackSection/);
     assert.doesNotMatch(page, /HomeScrollExpand/);
+    assert.match(page, /IdentityStrip/);
+    assert.match(page, /CloseCta/);
+    assert.doesNotMatch(page, /from "@\/components\/shared\/Reveal"/);
   });
 });

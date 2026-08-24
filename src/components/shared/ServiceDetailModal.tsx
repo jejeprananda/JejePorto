@@ -92,7 +92,7 @@ export function ServiceDetailModal({
       >
         <div className="flex items-start justify-between gap-4">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-orange-600">
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-accent">
               Service
             </p>
             <h2
@@ -108,7 +108,7 @@ export function ServiceDetailModal({
             type="button"
             aria-label="Close service details"
             onClick={onClose}
-            className="inline-flex size-10 items-center justify-center rounded-full border border-slate-200 text-slate-700 transition hover:border-orange-500 hover:text-orange-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-offset-2"
+            className="inline-flex size-10 items-center justify-center rounded-full border border-rule text-slate-700 transition hover:border-accent hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
           >
             <X className="size-4" aria-hidden="true" />
           </button>
