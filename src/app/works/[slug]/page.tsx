@@ -55,7 +55,7 @@ export default async function ProjectDetailPage({
     .slice(0, 3);
 
   return (
-    <main className="bg-white">
+    <main className="bg-paper">
       <Hero project={project} />
       <HeroImage
         src={project.heroImage}

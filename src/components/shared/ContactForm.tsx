@@ -103,7 +103,7 @@ export function ContactForm() {
   }
 
   const inputClass =
-    "mt-1.5 w-full rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-950 outline-none transition focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 disabled:opacity-60";
+    "mt-1.5 w-full border border-rule bg-paper px-3 py-2.5 text-sm text-ink outline-none transition focus:border-ink focus:ring-2 focus:ring-accent/20 disabled:opacity-60";
 
   return (
     <form name="contact" onSubmit={handleSubmit} className="mt-5 space-y-4" noValidate>
@@ -119,7 +119,7 @@ export function ContactForm() {
       </p>
 
       <div>
-        <label htmlFor="name" className="block text-sm font-medium text-slate-800">
+        <label htmlFor="name" className="block text-sm font-medium text-ink">
           Name
         </label>
         <input
@@ -147,7 +147,7 @@ export function ContactForm() {
       </div>
 
       <div>
-        <label htmlFor="email" className="block text-sm font-medium text-slate-800">
+        <label htmlFor="email" className="block text-sm font-medium text-ink">
           Email
         </label>
         <input
@@ -175,7 +175,7 @@ export function ContactForm() {
       </div>
 
       <div>
-        <label htmlFor="message" className="block text-sm font-medium text-slate-800">
+        <label htmlFor="message" className="block text-sm font-medium text-ink">
           Message
         </label>
         <textarea
@@ -208,7 +208,7 @@ export function ContactForm() {
       ) : null}
 
       {infoMessage ? (
-        <p role="status" className="text-sm text-slate-600">
+        <p role="status" className="text-sm text-ink-muted">
           {infoMessage}
         </p>
       ) : null}
@@ -217,12 +217,12 @@ export function ContactForm() {
         type="submit"
         disabled={pending}
         className="
-          inline-flex h-10 w-full items-center justify-center
-          rounded-lg border border-slate-900/20 bg-white
-          text-sm font-medium text-slate-950
-          transition hover:border-orange-500 hover:text-orange-600
+          inline-flex min-h-12 w-full items-center justify-center
+          border border-ink bg-transparent
+          text-sm font-medium text-ink
+          transition hover:bg-ink hover:text-paper
           focus-visible:outline-none focus-visible:ring-2
-          focus-visible:ring-orange-500 focus-visible:ring-offset-2
+          focus-visible:ring-accent focus-visible:ring-offset-2
           disabled:cursor-not-allowed disabled:opacity-60
         "
       >

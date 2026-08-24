@@ -37,10 +37,10 @@ export function Gallery({ items, title }: GalleryProps) {
   return (
     <SectionShell tone="white">
       <div className="max-w-2xl">
-        <p className="text-xs font-medium tracking-[0.16em] text-slate-500 uppercase">
+        <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
           Visuals
         </p>
-        <h2 className="mt-4 font-serif text-4xl tracking-[-0.03em] text-slate-950 sm:text-5xl">
+        <h2 className="mt-4 text-3xl font-semibold tracking-[-0.04em] text-ink sm:text-4xl">
           Screenshots
         </h2>
       </div>
@@ -51,7 +51,7 @@ export function Gallery({ items, title }: GalleryProps) {
             const item = row[0];
             return (
               <figure key={item.imagePath} className="group">
-                <div className="relative aspect-video overflow-hidden rounded-[28px] border border-slate-200 bg-slate-100 shadow-sm">
+                <div className="relative aspect-video overflow-hidden border border-rule bg-paper">
                   <Image
                     src={item.imagePath}
                     alt={`${title} — ${item.caption}`}
@@ -60,7 +60,7 @@ export function Gallery({ items, title }: GalleryProps) {
                     className="object-cover transition duration-300 group-hover:scale-[1.02]"
                   />
                 </div>
-                <figcaption className="mt-4 text-sm text-slate-600">
+                <figcaption className="mt-4 text-sm text-ink-muted">
                   {item.caption}
                 </figcaption>
               </figure>
@@ -74,7 +74,7 @@ export function Gallery({ items, title }: GalleryProps) {
             >
               {row.map((item) => (
                 <figure key={item.imagePath} className="group">
-                  <div className="relative aspect-[4/3] overflow-hidden rounded-[28px] border border-slate-200 bg-slate-100 shadow-sm">
+                  <div className="relative aspect-[4/3] overflow-hidden border border-rule bg-paper">
                     <Image
                       src={item.imagePath}
                       alt={`${title} — ${item.caption}`}
@@ -83,7 +83,7 @@ export function Gallery({ items, title }: GalleryProps) {
                       className="object-cover transition duration-300 group-hover:scale-[1.02]"
                     />
                   </div>
-                  <figcaption className="mt-4 text-sm text-slate-600">
+                  <figcaption className="mt-4 text-sm text-ink-muted">
                     {item.caption}
                   </figcaption>
                 </figure>

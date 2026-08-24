@@ -9,10 +9,10 @@ export function Results({ results }: ResultsProps) {
   return (
     <SectionShell tone="white">
       <div className="max-w-2xl">
-        <p className="text-xs font-medium tracking-[0.16em] text-slate-500 uppercase">
+        <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
           Outcomes
         </p>
-        <h2 className="mt-4 font-serif text-4xl tracking-[-0.03em] text-slate-950 sm:text-5xl">
+        <h2 className="mt-4 text-3xl font-semibold tracking-[-0.04em] text-ink sm:text-4xl">
           Results
         </h2>
       </div>
@@ -21,12 +21,12 @@ export function Results({ results }: ResultsProps) {
         {results.map((result) => (
           <article
             key={`${result.value}-${result.label}`}
-            className="rounded-xl border border-slate-200 bg-white px-6 py-8 text-center shadow-sm transition duration-300 hover:-translate-y-0.5"
+            className="border-t border-rule py-8 text-center"
           >
-            <p className="font-serif text-4xl tracking-[-0.04em] text-slate-950 sm:text-5xl">
+            <p className="text-4xl font-semibold tracking-[-0.04em] text-ink sm:text-5xl">
               {result.value}
             </p>
-            <p className="mt-3 text-sm font-medium text-slate-600">{result.label}</p>
+            <p className="mt-3 text-sm font-medium text-ink-muted">{result.label}</p>
           </article>
         ))}
       </div>

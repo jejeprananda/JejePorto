@@ -15,7 +15,7 @@ function initials(name: string): string {
 
 function SidebarHeading({ children }: { children: string }) {
   return (
-    <h2 className="text-[11px] font-semibold uppercase tracking-[0.18em] text-orange-600">
+    <h2 className="font-mono text-[11px] uppercase tracking-[0.18em] text-accent">
       {children}
     </h2>
   );
@@ -23,11 +23,11 @@ function SidebarHeading({ children }: { children: string }) {
 
 function MainHeading({ children }: { children: string }) {
   return (
-    <h2 className="mb-3 flex items-center gap-3 text-[13px] font-bold uppercase tracking-[0.16em] text-slate-950">
+    <h2 className="mb-3 flex items-center gap-3 text-[13px] font-bold uppercase tracking-[0.16em] text-ink">
       {children}
       <span
         aria-hidden="true"
-        className="h-px flex-1 bg-slate-200 print:bg-slate-300"
+        className="h-px flex-1 bg-rule print:bg-rule"
       />
     </h2>
   );
@@ -38,47 +38,47 @@ export function CvDocument({ data }: CvDocumentProps) {
     <article
       aria-label={`Curriculum vitae for ${data.name}`}
       className="
-        mx-auto w-full max-w-[900px] overflow-hidden rounded-2xl border
-        border-slate-200 bg-white text-slate-800 shadow-xl
-        print:max-w-none print:rounded-none print:border-0 print:shadow-none
+        mx-auto w-full max-w-[900px] overflow-hidden border
+        border-rule bg-white text-ink
+        print:max-w-none print:border-0
       "
     >
-      <header className="flex items-center gap-5 bg-slate-950 px-8 py-8 text-white print:bg-slate-950 print:px-10 sm:px-10">
+      <header className="flex items-center gap-5 bg-ink px-8 py-8 text-white print:bg-ink print:px-10 sm:px-10">
         <div
           aria-hidden="true"
-          className="flex size-16 shrink-0 items-center justify-center rounded-full bg-orange-500 text-2xl font-bold tracking-tight text-white"
+          className="flex size-16 shrink-0 items-center justify-center bg-accent text-2xl font-bold tracking-tight text-white"
         >
           {initials(data.name)}
         </div>
         <div>
-          <h1 className="font-serif text-3xl leading-none tracking-[-0.02em] sm:text-4xl">
+          <h1 className="text-3xl font-semibold tracking-[-0.04em] sm:text-4xl">
             {data.name}
           </h1>
-          <p className="mt-2 text-sm font-medium uppercase tracking-[0.22em] text-orange-300">
+          <p className="mt-2 font-mono text-xs uppercase tracking-[0.18em] text-white/70">
             {data.headline}
           </p>
         </div>
       </header>
 
       <div className="grid grid-cols-1 gap-y-8 px-8 py-8 sm:px-10 md:grid-cols-[240px_1fr] md:gap-x-10 print:px-10 print:py-8">
-        <aside className="flex flex-col gap-6 md:border-r md:border-slate-100 md:pr-8 print:md:border-slate-200">
+        <aside className="flex flex-col gap-6 md:border-r md:border-rule md:pr-8 print:md:border-rule">
           <section>
             <SidebarHeading>Contact</SidebarHeading>
             <ul className="mt-3 flex flex-col gap-2.5">
               {data.contacts.map((contact) => (
                 <li key={contact.label} className="text-[13px] leading-snug">
-                  <span className="block text-[10px] font-semibold uppercase tracking-[0.14em] text-slate-400">
+                  <span className="block font-mono text-[10px] uppercase tracking-[0.14em] text-ink-muted">
                     {contact.label}
                   </span>
                   {contact.href ? (
                     <a
                       href={contact.href}
-                      className="break-words text-slate-700 underline-offset-2 hover:text-orange-600 hover:underline"
+                      className="break-words text-ink underline-offset-2 hover:text-accent hover:underline"
                     >
                       {contact.value}
                     </a>
                   ) : (
-                    <span className="break-words text-slate-700">
+                    <span className="break-words text-ink">
                       {contact.value}
                     </span>
                   )}
@@ -94,7 +94,7 @@ export function CvDocument({ data }: CvDocumentProps) {
                 {group.skills.map((skill) => (
                   <li
                     key={skill}
-                    className="rounded-md bg-slate-100 px-2 py-1 text-[11px] font-medium text-slate-700 print:border print:border-slate-200 print:bg-white"
+                    className="border border-rule px-2 py-1 text-[11px] font-medium text-ink print:bg-white"
                   >
                     {skill}
                   </li>
@@ -110,11 +110,11 @@ export function CvDocument({ data }: CvDocumentProps) {
                 {data.services.map((service) => (
                   <li
                     key={service.title}
-                    className="flex items-start gap-2 text-[12px] leading-snug text-slate-700"
+                    className="flex items-start gap-2 text-[12px] leading-snug text-ink"
                   >
                     <span
                       aria-hidden="true"
-                      className="mt-1.5 size-1.5 shrink-0 rounded-full bg-orange-500"
+                      className="mt-1.5 size-1.5 shrink-0 rounded-full bg-accent"
                     />
                     {service.title}
                   </li>
@@ -127,14 +127,14 @@ export function CvDocument({ data }: CvDocumentProps) {
         <main className="flex flex-col gap-7">
           <section>
             <MainHeading>Profile</MainHeading>
-            <p className="text-[13px] leading-6 text-slate-600">
+            <p className="text-[13px] leading-6 text-ink-muted">
               {data.summary}
             </p>
             {data.availability ? (
-              <p className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-3 py-1 text-[11px] font-medium text-emerald-800 print:border print:border-emerald-200">
+              <p className="mt-3 inline-flex items-center gap-1.5 border border-rule px-3 py-1 font-mono text-[11px] text-accent print:border-rule">
                 <span
                   aria-hidden="true"
-                  className="size-1.5 rounded-full bg-emerald-500"
+                  className="size-1.5 rounded-full bg-accent"
                 />
                 {data.availability}
               </p>
@@ -147,23 +147,23 @@ export function CvDocument({ data }: CvDocumentProps) {
               {data.experience.map((item) => (
                 <div key={item.slug} className="break-inside-avoid">
                   <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
-                    <h3 className="text-[15px] font-semibold text-slate-950">
+                    <h3 className="text-[15px] font-semibold text-ink">
                       {item.role}
-                      <span className="font-normal text-slate-400"> · </span>
-                      <span className="font-medium text-orange-600">
+                      <span className="font-normal text-ink-muted"> · </span>
+                      <span className="font-medium text-accent">
                         {item.title}
                       </span>
                     </h3>
-                    <span className="text-[11px] font-medium uppercase tracking-[0.1em] text-slate-500">
+                    <span className="font-mono text-[11px] uppercase tracking-[0.1em] text-ink-muted">
                       {item.period}
                     </span>
                   </div>
 
-                  <p className="mt-0.5 text-[12px] font-medium text-slate-500">
+                  <p className="mt-0.5 text-[12px] font-medium text-ink-muted">
                     {item.company} · {item.category}
                   </p>
 
-                  <p className="mt-2 text-[12.5px] leading-6 text-slate-600">
+                  <p className="mt-2 text-[12.5px] leading-6 text-ink-muted">
                     {item.description}
                   </p>
 
@@ -172,11 +172,11 @@ export function CvDocument({ data }: CvDocumentProps) {
                       {item.highlights.map((highlight) => (
                         <li
                           key={highlight}
-                          className="flex items-start gap-2 text-[12px] leading-snug text-slate-600"
+                          className="flex items-start gap-2 text-[12px] leading-snug text-ink-muted"
                         >
                           <span
                             aria-hidden="true"
-                            className="mt-[7px] size-1 shrink-0 rounded-full bg-orange-400"
+                            className="mt-[7px] size-1 shrink-0 rounded-full bg-accent"
                           />
                           {highlight}
                         </li>
@@ -185,8 +185,8 @@ export function CvDocument({ data }: CvDocumentProps) {
                   ) : null}
 
                   {item.tech.length > 0 ? (
-                    <p className="mt-2 text-[11px] leading-snug text-slate-500">
-                      <span className="font-semibold text-slate-600">
+                    <p className="mt-2 text-[11px] leading-snug text-ink-muted">
+                      <span className="font-semibold text-ink">
                         Stack:{" "}
                       </span>
                       {item.tech.join(", ")}

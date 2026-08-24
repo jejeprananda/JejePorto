@@ -48,10 +48,10 @@ export function Features({ features }: FeaturesProps) {
   return (
     <SectionShell tone="muted">
       <div className="max-w-2xl">
-        <p className="text-xs font-medium tracking-[0.16em] text-slate-500 uppercase">
+        <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
           Capabilities
         </p>
-        <h2 className="mt-4 font-serif text-4xl tracking-[-0.03em] text-slate-950 sm:text-5xl">
+        <h2 className="mt-4 text-3xl font-semibold tracking-[-0.04em] text-ink sm:text-4xl">
           Key Features
         </h2>
       </div>
@@ -63,15 +63,15 @@ export function Features({ features }: FeaturesProps) {
           return (
             <article
               key={feature.title}
-              className="rounded-xl border border-slate-200 bg-white p-7 shadow-sm transition duration-300 hover:-translate-y-0.5 hover:border-orange-500/40"
+              className="border-t border-rule py-6"
             >
-              <div className="flex size-11 items-center justify-center rounded-xl border border-slate-200 bg-slate-50 text-slate-950">
+              <div className="flex size-11 items-center justify-center border border-rule bg-paper text-ink">
                 <Icon className="size-5" aria-hidden="true" strokeWidth={1.75} />
               </div>
-              <h3 className="mt-5 text-lg font-semibold tracking-[-0.02em] text-slate-950">
+              <h3 className="mt-5 text-lg font-semibold tracking-[-0.02em] text-ink">
                 {feature.title}
               </h3>
-              <p className="mt-2 text-sm leading-7 text-slate-600">
+              <p className="mt-2 text-sm leading-7 text-ink-muted">
                 {feature.description}
               </p>
             </article>
