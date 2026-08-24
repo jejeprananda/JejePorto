@@ -37,7 +37,7 @@ export function InfoGrid({ project }: InfoGridProps) {
             <p className="font-mono text-xs uppercase tracking-[0.14em] text-ink-muted">
               {card.label}
             </p>
-            <p className="mt-3 text-base font-medium leading-7 text-ink">
+            <p className="mt-3 min-w-0 text-base font-medium leading-7 text-ink [overflow-wrap:anywhere]">
               {card.value}
             </p>
           </article>

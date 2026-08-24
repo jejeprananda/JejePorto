@@ -47,7 +47,14 @@ export function Navbar() {
   const lightOnDark = isOverVideo && !isMenuOpen;
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 bg-transparent pt-[env(safe-area-inset-top)]">
+    <header
+      className={[
+        "fixed inset-x-0 top-0 z-50 pt-[env(safe-area-inset-top)]",
+        lightOnDark
+          ? "bg-transparent"
+          : "border-b border-rule bg-paper",
+      ].join(" ")}
+    >
       <div className="mx-auto flex h-14 w-full max-w-[1280px] items-center justify-between px-5 sm:h-16 sm:px-8 lg:px-12">
         <Link
           href="/"

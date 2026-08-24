@@ -17,6 +17,13 @@ describe("Mobile spec-sheet layout", () => {
     assert.match(layout, /viewportFit:\s*"cover"/);
   });
 
+  it("uses a paper navbar on light pages so scrolled content is not covered", () => {
+    const nav = read("src/components/layout/Navbar.tsx");
+    assert.match(nav, /lightOnDark/);
+    assert.match(nav, /bg-paper/);
+    assert.match(nav, /bg-transparent/);
+  });
+
   it("uses safe-area padding on chrome and hero overlay", () => {
     const nav = read("src/components/layout/Navbar.tsx");
     const footer = read("src/components/layout/SiteFooter.tsx");

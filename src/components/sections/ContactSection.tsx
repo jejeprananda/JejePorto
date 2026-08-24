@@ -141,7 +141,7 @@ export function ContactSection() {
               Chat on WhatsApp
             </a>
 
-            <p className="mt-3 text-center font-mono text-xs text-ink-muted">
+            <p className="mt-3 text-center font-mono text-xs text-ink-muted [overflow-wrap:anywhere]">
               or save the number {whatsapp.display}
             </p>
 
