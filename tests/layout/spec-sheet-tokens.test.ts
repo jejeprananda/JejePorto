@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { readFileSync, readdirSync } from "node:fs";
 import { describe, it } from "node:test";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -47,5 +47,37 @@ describe("Navbar edge-min", () => {
     assert.doesNotMatch(nav, /backdrop-blur-md/);
     assert.doesNotMatch(nav, /lg:shadow-\[0_8px_32px/);
     assert.doesNotMatch(nav, /orange-/);
+  });
+});
+
+function walk(dir: string): string[] {
+  return readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
+    const path = join(dir, entry.name);
+    if (entry.isDirectory()) return walk(path);
+    if (/\.(tsx|ts|css)$/.test(entry.name)) return [path];
+    return [];
+  });
+}
+
+describe("Leftover visual language", () => {
+  it("has no orange or serif classes under src/", () => {
+    const files = walk(join(root, "src"));
+    for (const file of files) {
+      const source = readFileSync(file, "utf8");
+      assert.doesNotMatch(source, /orange-/, file);
+      assert.doesNotMatch(source, /font-serif/, file);
+    }
+  });
+
+  it("does not keep unused expand-hero files", () => {
+    const files = walk(join(root, "src"));
+    const rel = files.map((file) => file.slice(join(root, "src").length));
+    assert.equal(
+      rel.some((file) => file.includes("scroll-expansion-hero")),
+      false,
+    );
+    assert.equal(rel.some((file) => file.includes("HomeScrollExpand")), false);
+    assert.equal(rel.some((file) => file.includes("HeroSection")), false);
+    assert.equal(rel.some((file) => file.includes("WorksHero")), false);
   });
 });
