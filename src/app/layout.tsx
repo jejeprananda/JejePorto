@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import { Geist, Geist_Mono } from "next/font/google";
 
 import { Navbar } from "@/components/layout/Navbar";
+import { SiteFooter } from "@/components/layout/SiteFooter";
 
 import "./globals.css";
 
@@ -38,6 +39,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <body className="flex min-h-full flex-col bg-paper text-ink">
         <Navbar />
         {children}
+        <SiteFooter />
       </body>
     </html>
   );

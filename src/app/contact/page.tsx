@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <main className="bg-slate-50/60 pt-24 md:pt-28">
+    <main className="bg-paper pt-24">
       <ContactSection />
     </main>
   );
