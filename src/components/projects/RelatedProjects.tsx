@@ -50,6 +50,7 @@ export function RelatedProjects({ projects }: RelatedProjectsProps) {
             </div>
             <Link
               href={`/works/${project.slug}`}
+              aria-label={`Open ${project.title}`}
               className="font-mono text-xs text-ink underline-offset-4 hover:text-accent hover:underline"
             >
               Open

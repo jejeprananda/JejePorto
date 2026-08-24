@@ -20,6 +20,7 @@ describe("HeroVideoChapter", () => {
     assert.match(source, /\/images\/hero-poster\.jpg/);
     assert.match(source, /sticky/);
     assert.match(source, /prefers-reduced-motion/);
+    assert.match(source, /motion-reduce:h-svh/);
     assert.match(source, /Jessy Prananda/);
     assert.match(source, /Fullstack Developer/);
     assert.match(source, /Scroll/);

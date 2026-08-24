@@ -77,7 +77,7 @@ export function ServiceDetailModal({
 
   return (
     <div
-      className="fixed inset-0 z-[60] flex items-end justify-center bg-slate-950/50 p-4 sm:items-center"
+      className="fixed inset-0 z-[60] flex items-end justify-center bg-ink/50 p-4 sm:items-center"
       role="presentation"
       onClick={onClose}
     >
@@ -87,7 +87,7 @@ export function ServiceDetailModal({
         aria-modal="true"
         aria-labelledby="service-modal-title"
         aria-describedby="service-modal-description"
-        className="max-h-[85dvh] w-full max-w-lg overflow-y-auto rounded-3xl bg-white p-6 shadow-2xl sm:p-8"
+        className="max-h-[85dvh] w-full max-w-lg overflow-y-auto border border-rule bg-paper p-6 sm:p-8"
         onClick={(event) => event.stopPropagation()}
       >
         <div className="flex items-start justify-between gap-4">
@@ -97,7 +97,7 @@ export function ServiceDetailModal({
             </p>
             <h2
               id="service-modal-title"
-              className="mt-3 text-2xl font-semibold tracking-[-0.03em] text-slate-950"
+              className="mt-3 text-2xl font-semibold tracking-[-0.03em] text-ink"
             >
               {service.title}
             </h2>
@@ -108,7 +108,7 @@ export function ServiceDetailModal({
             type="button"
             aria-label="Close service details"
             onClick={onClose}
-            className="inline-flex size-10 items-center justify-center rounded-full border border-rule text-slate-700 transition hover:border-accent hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+            className="inline-flex size-10 items-center justify-center border border-rule text-ink transition hover:border-accent hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
           >
             <X className="size-4" aria-hidden="true" />
           </button>
@@ -116,7 +116,7 @@ export function ServiceDetailModal({
 
         <p
           id="service-modal-description"
-          className="mt-6 text-sm leading-7 text-slate-600 sm:text-base sm:leading-8"
+          className="mt-6 text-sm leading-7 text-ink-muted sm:text-base sm:leading-8"
         >
           {service.detailDescription}
         </p>
