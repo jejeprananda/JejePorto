@@ -166,7 +166,7 @@ Document layout, not marketing landing:
 ## Motion
 
 - Hero: pin + dim/translate + content entrance (one chapter).
-- Below hero: static or near-static. No fade-up on every section.
+- Below hero: static layout. Remove `Reveal` scroll triggers from homepage sections unless one identity-strip mount fade is needed; prefer static.
 - Respect `prefers-reduced-motion`: skip pin animation, show final state immediately.
 
 ## Error & empty states
@@ -192,7 +192,6 @@ Document layout, not marketing landing:
 4. Recruiter can reach Contact and CV in one click from home close block.
 5. All routes work; no data layer regressions; existing tests updated and passing.
 
-## Open decisions (resolved at implementation)
+## Accent color (implementation lock)
 
-- Exact accent color token (chosen from "technical + simple" — not orange-by-default).
-- Whether `Reveal` is removed entirely below hero or kept for one identity-strip entrance.
+At implementation start, pick **one** accent from: cool blue-gray (`#3B5B8A` range) or muted teal (`#2A6B6B` range). Lock it in CSS tokens before any component work. Do not reuse the current orange as the primary accent.
