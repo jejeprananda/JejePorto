@@ -36,3 +36,16 @@ describe("Spec sheet tokens", () => {
     assert.doesNotMatch(layout, /instrumentSerif/);
   });
 });
+
+describe("Navbar edge-min", () => {
+  it("uses text links without a glass pill", () => {
+    const nav = read("src/components/layout/Navbar.tsx");
+
+    assert.match(nav, /href: "\/#projects"/);
+    assert.match(nav, /text-accent/);
+    assert.doesNotMatch(nav, /lg:rounded-full/);
+    assert.doesNotMatch(nav, /backdrop-blur-md/);
+    assert.doesNotMatch(nav, /lg:shadow-\[0_8px_32px/);
+    assert.doesNotMatch(nav, /orange-/);
+  });
+});
