@@ -25,12 +25,23 @@ export function Navbar() {
     }
 
     function handleScroll() {
-      setIsOverVideo(window.scrollY < window.innerHeight * 0.85);
+      const pin = document.getElementById("hero-video-pin");
+      if (!pin) {
+        setIsOverVideo(false);
+        return;
+      }
+
+      const navbarHeight = 56;
+      setIsOverVideo(pin.getBoundingClientRect().bottom > navbarHeight);
     }
 
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
   }, [isHome]);
 
   useEffect(() => {
@@ -47,8 +58,15 @@ export function Navbar() {
   const lightOnDark = isOverVideo && !isMenuOpen;
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 bg-transparent">
-      <div className="mx-auto flex h-16 w-full max-w-[1280px] items-center justify-between px-5 sm:px-8 lg:px-12">
+    <header
+      className={[
+        "fixed inset-x-0 top-0 z-50 pt-[env(safe-area-inset-top)]",
+        lightOnDark
+          ? "bg-transparent"
+          : "border-b border-rule bg-paper",
+      ].join(" ")}
+    >
+      <div className="mx-auto flex h-14 w-full max-w-[1280px] items-center justify-between px-5 sm:h-16 sm:px-8 lg:px-12">
         <Link
           href="/"
           aria-label="Go to homepage"
@@ -105,8 +123,8 @@ export function Navbar() {
 
       <div
         id="mobile-navigation"
-        className={[
-          "fixed inset-0 z-40 bg-paper px-5 pb-8 pt-24 transition-all duration-300 lg:hidden",
+          className={[
+            "fixed inset-0 z-40 bg-paper px-5 pb-[max(2rem,env(safe-area-inset-bottom))] pt-[max(6rem,calc(env(safe-area-inset-top)+4.5rem))] transition-all duration-300 lg:hidden",
           isMenuOpen
             ? "visible translate-y-0 opacity-100"
             : "invisible -translate-y-4 opacity-0",
@@ -118,7 +136,7 @@ export function Navbar() {
               <Link
                 href={item.href}
                 onClick={closeMenu}
-                className="flex min-h-16 items-center text-2xl font-medium tracking-tight text-ink"
+                className="flex min-h-14 items-center text-xl font-medium tracking-tight text-ink sm:min-h-16 sm:text-2xl"
               >
                 {item.label}
               </Link>

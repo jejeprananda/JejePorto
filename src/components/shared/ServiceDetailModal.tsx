@@ -77,7 +77,7 @@ export function ServiceDetailModal({
 
   return (
     <div
-      className="fixed inset-0 z-[60] flex items-end justify-center bg-ink/50 p-4 sm:items-center"
+      className="fixed inset-0 z-[60] flex items-end justify-center bg-ink/50 p-0 sm:items-center sm:p-4"
       role="presentation"
       onClick={onClose}
     >
@@ -87,7 +87,7 @@ export function ServiceDetailModal({
         aria-modal="true"
         aria-labelledby="service-modal-title"
         aria-describedby="service-modal-description"
-        className="max-h-[85dvh] w-full max-w-lg overflow-y-auto border border-rule bg-paper p-6 sm:p-8"
+        className="max-h-[90dvh] w-full max-w-lg overflow-y-auto border border-rule bg-paper p-5 pb-[max(1.5rem,env(safe-area-inset-bottom))] sm:max-h-[85dvh] sm:p-8 max-sm:border-x-0 max-sm:border-b-0"
         onClick={(event) => event.stopPropagation()}
       >
         <div className="flex items-start justify-between gap-4">

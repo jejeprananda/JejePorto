@@ -55,7 +55,7 @@ export function ServicesSection({ services }: ServicesSectionProps) {
                   <button
                     type="button"
                     onClick={() => setActiveService(service)}
-                    className="justify-self-start font-mono text-xs text-ink underline-offset-4 hover:text-accent hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                    className="inline-flex min-h-11 items-center justify-self-start font-mono text-xs text-ink underline-offset-4 hover:text-accent hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
                   >
                     Learn more
                   </button>

@@ -80,7 +80,7 @@ export function ContactSection() {
       aria-labelledby="contact-heading"
       className="mx-auto w-full max-w-[1280px] px-5 py-16 sm:px-8 lg:px-12"
     >
-      <div className="grid grid-cols-1 gap-12 lg:grid-cols-[minmax(0,1fr)_20rem] lg:gap-16">
+      <div className="grid min-w-0 grid-cols-1 gap-12 lg:grid-cols-[minmax(0,1fr)_20rem] lg:gap-16">
         <header>
           <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
             Contact
@@ -141,7 +141,7 @@ export function ContactSection() {
               Chat on WhatsApp
             </a>
 
-            <p className="mt-3 text-center font-mono text-xs text-ink-muted">
+            <p className="mt-3 text-center font-mono text-xs text-ink-muted [overflow-wrap:anywhere]">
               or save the number {whatsapp.display}
             </p>
 
@@ -159,7 +159,7 @@ export function ContactSection() {
                       aria-label={social.label}
                       target={isExternal ? "_blank" : undefined}
                       rel={isExternal ? "noopener noreferrer" : undefined}
-                      className="inline-flex text-ink-muted transition hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                      className="inline-flex size-11 items-center justify-center text-ink-muted transition hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
                     >
                       <Icon className="size-[18px]" />
                     </Link>

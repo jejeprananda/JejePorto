@@ -27,13 +27,13 @@ export function RelatedProjects({ projects }: RelatedProjectsProps) {
         {projects.map((project) => (
           <article
             key={project.slug}
-            className="grid gap-3 border-b border-rule py-6 sm:grid-cols-[7rem_minmax(0,1fr)_auto] sm:items-baseline sm:gap-8"
+            className="grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-x-4 gap-y-2 border-b border-rule py-6 sm:grid-cols-[7rem_minmax(0,1fr)_auto] sm:gap-8"
           >
-            <p className="font-mono text-xs text-ink-muted">
+            <p className="font-mono text-xs text-ink-muted sm:row-start-1">
               {project.year}
             </p>
-            <div className="min-w-0">
-              <h3 className="text-xl font-semibold tracking-[-0.03em] text-ink">
+            <div className="col-span-2 min-w-0 sm:col-span-1 sm:col-start-2 sm:row-start-1">
+              <h3 className="min-w-0 text-xl font-semibold tracking-[-0.03em] text-ink">
                 <Link
                   href={`/works/${project.slug}`}
                   className="transition hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
@@ -51,7 +51,7 @@ export function RelatedProjects({ projects }: RelatedProjectsProps) {
             <Link
               href={`/works/${project.slug}`}
               aria-label={`Open ${project.title}`}
-              className="font-mono text-xs text-ink underline-offset-4 hover:text-accent hover:underline"
+              className="inline-flex min-h-11 items-center font-mono text-xs text-ink underline-offset-4 hover:text-accent hover:underline sm:col-start-3 sm:row-start-1"
             >
               Open
             </Link>
