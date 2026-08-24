@@ -45,47 +45,33 @@ describe("Works page redirect", () => {
   });
 });
 
-describe("ProjectsSection reveals", () => {
-  it("wraps header and rows with scroll Reveal", () => {
+describe("Homepage sections are static", () => {
+  it("does not wrap project rows in Reveal", () => {
     const source = read("src/components/sections/ProjectsSection.tsx");
-
-    assert.match(source, /from "@\/components\/shared\/Reveal"/);
-    assert.match(source, /trigger="scroll"/);
-    assert.match(source, /direction="up"/);
-    assert.match(source, /120 \+ index \* 80|120 \+ index\*80/);
+    assert.doesNotMatch(source, /from "@\/components\/shared\/Reveal"/);
+    assert.match(source, /id="projects"/);
+    assert.match(source, /\bisFlagship\b/);
   });
-});
 
-describe("ServicesSection reveals", () => {
-  it("wraps header and cards with scroll Reveal", () => {
+  it("renders services as a definition list and keeps the modal", () => {
     const source = read("src/components/sections/ServicesSection.tsx");
-
-    assert.match(source, /from "@\/components\/shared\/Reveal"/);
-    assert.match(source, /trigger="scroll"/);
-    assert.match(source, /direction="up"/);
-    assert.match(source, /120 \+ index \* 80|120 \+ index\*80/);
+    assert.doesNotMatch(source, /from "@\/components\/shared\/Reveal"/);
     assert.match(source, /ServiceDetailModal/);
-    assert.match(source, /className="h-full"/);
-    assert.match(source, /group flex h-full min-h-\[360px\]/);
+    assert.match(source, /<dl/);
+    assert.doesNotMatch(source, /min-h-\[360px\]/);
   });
-});
 
-describe("StackSection and home CTA reveals", () => {
-  it("wraps stack header and groups with scroll Reveal", () => {
+  it("renders stack groups without Reveal", () => {
     const source = read("src/components/sections/StackSection.tsx");
-
-    assert.match(source, /from "@\/components\/shared\/Reveal"/);
-    assert.match(source, /trigger="scroll"/);
-    assert.match(source, /direction="up"/);
-    assert.match(source, /120 \+ index \* 80|120 \+ index\*80/);
+    assert.doesNotMatch(source, /from "@\/components\/shared\/Reveal"/);
+    assert.match(source, /id="stack"/);
   });
 
-  it("reveals CTA copy then contact button on home", () => {
+  it("uses CloseCta on home without Reveal", () => {
     const page = read("src/app/page.tsx");
-
-    assert.match(page, /from "@\/components\/shared\/Reveal"/);
-    assert.match(page, /Start a project/);
-    assert.match(page, /delay=\{100\}/);
-    assert.match(page, /Contact Me/);
+    assert.match(page, /CloseCta/);
+    assert.match(page, /IdentityStrip/);
+    assert.doesNotMatch(page, /from "@\/components\/shared\/Reveal"/);
+    assert.doesNotMatch(page, /Start a project/);
   });
 });

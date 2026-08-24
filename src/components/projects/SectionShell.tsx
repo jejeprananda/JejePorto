@@ -22,7 +22,7 @@ export function SectionShell({
     <section
       id={id}
       className={[
-        tone === "muted" ? "bg-slate-50" : "bg-white",
+        "bg-paper",
         className,
       ]
         .filter(Boolean)

@@ -71,9 +71,6 @@ const socialIcons = {
   ),
 } as const;
 
-const cardClass =
-  "rounded-xl border border-slate-200 bg-white p-5 shadow-sm";
-
 export function ContactSection() {
   const whatsappUrl = getWhatsAppUrl();
   const { isAvailableForWork, whatsapp, socials } = contactConfig;
@@ -81,109 +78,103 @@ export function ContactSection() {
   return (
     <section
       aria-labelledby="contact-heading"
-      className="mx-auto w-full max-w-[900px] px-5 py-16 md:px-8"
+      className="mx-auto w-full max-w-[1280px] px-5 py-16 sm:px-8 lg:px-12"
     >
-      <header>
-        <p className="text-xs font-medium uppercase tracking-[0.5px] text-orange-600">
-          CONTACT
-        </p>
-        <h1
-          id="contact-heading"
-          className="mt-3 text-[28px] font-bold tracking-[-0.03em] text-slate-950 md:text-[40px]"
-        >
-          Let&apos;s talk
-        </h1>
-        <p className="mt-3 max-w-[520px] text-[15px] leading-7 text-slate-600">
-          The fastest way to reach me is WhatsApp. Tell me about your project,
-          timeline, and goals — I usually reply within a few hours.
-        </p>
-
-        <ul className="mt-5 flex flex-wrap gap-2.5">
-          <li className="inline-flex items-center gap-1.5 rounded-full bg-slate-100 px-3 py-1.5 text-xs font-medium text-slate-700">
-            <Clock aria-hidden="true" className="size-3.5" strokeWidth={2} />
-            {contactConfig.responseLabel}
-          </li>
-          <li className="inline-flex items-center gap-1.5 rounded-full bg-slate-100 px-3 py-1.5 text-xs font-medium text-slate-700">
-            <MapPin aria-hidden="true" className="size-3.5" strokeWidth={2} />
-            {contactConfig.locationLabel}
-          </li>
-          {isAvailableForWork ? (
-            <li className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-3 py-1.5 text-xs font-medium text-emerald-800">
-              <CheckCircle2
-                aria-hidden="true"
-                className="size-3.5"
-                strokeWidth={2}
-              />
-              {contactConfig.availableLabel}
-            </li>
-          ) : null}
-        </ul>
-      </header>
-
-      <div className="mt-8 grid grid-cols-1 items-start gap-4 md:grid-cols-2">
-        <div className={cardClass}>
-          <div className="flex items-center gap-3">
-            <div className="flex size-10 shrink-0 items-center justify-center rounded-full bg-emerald-50 text-emerald-600">
-              <WhatsAppGlyph className="size-5" />
-            </div>
-            <div>
-              <h2 className="text-sm font-semibold text-slate-950">
-                Chat on WhatsApp
-              </h2>
-              <p className="mt-0.5 text-xs text-slate-500">
-                Fastest response
-              </p>
-            </div>
-          </div>
-
-          <a
-            href={whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="
-              mt-5 inline-flex h-10 w-full items-center justify-center
-              rounded-lg bg-slate-950 text-sm font-medium text-white
-              transition hover:bg-slate-800
-              focus-visible:outline-none focus-visible:ring-2
-              focus-visible:ring-orange-500 focus-visible:ring-offset-2
-            "
+      <div className="grid grid-cols-1 gap-12 lg:grid-cols-[minmax(0,1fr)_20rem] lg:gap-16">
+        <header>
+          <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
+            Contact
+          </p>
+          <h1
+            id="contact-heading"
+            className="mt-4 text-3xl font-semibold tracking-[-0.04em] text-ink sm:text-4xl"
           >
-            Chat on WhatsApp
-          </a>
-
-          <p className="mt-3 text-center text-xs text-slate-500">
-            or save the number {whatsapp.display}
+            Let&apos;s talk
+          </h1>
+          <p className="mt-4 max-w-xl text-base leading-7 text-ink-muted">
+            The fastest way to reach me is WhatsApp. Tell me about your project,
+            timeline, and goals — I usually reply within a few hours.
           </p>
 
-          <div className="my-5 h-px bg-slate-200" role="separator" />
-
-          <ul className="flex items-center gap-4">
-            {socials.map((social) => {
-              const Icon = socialIcons[social.label];
-              const isExternal = social.href.startsWith("http");
-
-              return (
-                <li key={social.label}>
-                  <Link
-                    href={social.href}
-                    aria-label={social.label}
-                    target={isExternal ? "_blank" : undefined}
-                    rel={isExternal ? "noopener noreferrer" : undefined}
-                    className="inline-flex text-slate-500 transition hover:text-orange-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500"
-                  >
-                    <Icon className="size-[18px]" />
-                  </Link>
-                </li>
-              );
-            })}
+          <ul className="mt-6 flex flex-wrap gap-3 font-mono text-xs text-ink-muted">
+            <li className="inline-flex items-center gap-1.5 border border-rule px-3 py-1.5">
+              <Clock aria-hidden="true" className="size-3.5" strokeWidth={2} />
+              {contactConfig.responseLabel}
+            </li>
+            <li className="inline-flex items-center gap-1.5 border border-rule px-3 py-1.5">
+              <MapPin aria-hidden="true" className="size-3.5" strokeWidth={2} />
+              {contactConfig.locationLabel}
+            </li>
+            {isAvailableForWork ? (
+              <li className="inline-flex items-center gap-1.5 border border-rule px-3 py-1.5 text-accent">
+                <CheckCircle2
+                  aria-hidden="true"
+                  className="size-3.5"
+                  strokeWidth={2}
+                />
+                {contactConfig.availableLabel}
+              </li>
+            ) : null}
           </ul>
-        </div>
 
-        <div className={cardClass}>
-          <h2 className="text-sm font-semibold text-slate-950">
-            Or send a short message
+          <div className="mt-10 border-t border-rule pt-10">
+            <div className="flex items-center gap-3">
+              <div className="flex size-10 shrink-0 items-center justify-center border border-rule text-accent">
+                <WhatsAppGlyph className="size-5" />
+              </div>
+              <div>
+                <h2 className="text-sm font-medium text-ink">
+                  Chat on WhatsApp
+                </h2>
+                <p className="mt-0.5 font-mono text-xs text-ink-muted">
+                  Fastest response
+                </p>
+              </div>
+            </div>
+
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-5 inline-flex min-h-12 w-full items-center justify-center border border-ink bg-ink text-sm font-medium text-paper transition hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+            >
+              Chat on WhatsApp
+            </a>
+
+            <p className="mt-3 text-center font-mono text-xs text-ink-muted">
+              or save the number {whatsapp.display}
+            </p>
+
+            <div className="my-6 h-px bg-rule" role="separator" />
+
+            <ul className="flex items-center gap-4">
+              {socials.map((social) => {
+                const Icon = socialIcons[social.label];
+                const isExternal = social.href.startsWith("http");
+
+                return (
+                  <li key={social.label}>
+                    <Link
+                      href={social.href}
+                      aria-label={social.label}
+                      target={isExternal ? "_blank" : undefined}
+                      rel={isExternal ? "noopener noreferrer" : undefined}
+                      className="inline-flex text-ink-muted transition hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                    >
+                      <Icon className="size-[18px]" />
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        </header>
+
+        <div className="border-t border-rule pt-10 lg:border-t-0 lg:border-l lg:pl-8 lg:pt-0">
+          <h2 className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
+            Message
           </h2>
-          <p className="mt-0.5 text-xs text-slate-500">
+          <p className="mt-2 text-sm text-ink-muted">
             I check email every day.
           </p>
           <ContactForm />

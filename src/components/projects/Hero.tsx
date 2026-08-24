@@ -35,42 +35,42 @@ export function Hero({ project }: HeroProps) {
   ];
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-slate-50 to-white">
+    <section className="relative overflow-hidden bg-paper">
       <div className="mx-auto grid w-full max-w-[1280px] gap-12 px-5 pb-16 pt-28 sm:px-8 sm:pb-20 sm:pt-32 lg:grid-cols-[minmax(0,1.15fr)_minmax(280px,0.85fr)] lg:items-center lg:gap-16 lg:px-12 lg:pb-24 lg:pt-36 xl:px-16">
         <div>
-          <nav aria-label="Breadcrumb" className="text-xs font-medium tracking-[0.16em] text-slate-500 uppercase">
+          <nav aria-label="Breadcrumb" className="font-mono text-xs uppercase tracking-[0.16em] text-ink-muted">
             <ol className="flex flex-wrap items-center gap-2">
               <li>
-                <Link href="/" className="transition duration-300 hover:text-orange-600">
+                <Link href="/" className="transition hover:text-accent">
                   Portfolio
                 </Link>
               </li>
-              <li aria-hidden="true" className="text-slate-300">
+              <li aria-hidden="true" className="text-ink-muted">
                 /
               </li>
               <li>
-                <Link href="/works" className="transition duration-300 hover:text-orange-600">
+                <Link href="/#projects" className="transition hover:text-accent">
                   Works
                 </Link>
               </li>
             </ol>
           </nav>
 
-          <h1 className="mt-8 font-serif text-[clamp(3rem,7vw,5.5rem)] leading-[0.95] tracking-[-0.03em] text-slate-950">
+          <h1 className="mt-8 text-[clamp(2.5rem,6vw,4.5rem)] font-semibold tracking-[-0.04em] text-ink">
             {project.title}
           </h1>
 
-          <p className="mt-6 max-w-xl text-base leading-7 text-slate-600 sm:text-lg sm:leading-8">
+          <p className="mt-6 max-w-xl text-base leading-7 text-ink-muted sm:text-lg sm:leading-8">
             {project.shortDescription}
           </p>
 
           <dl className="mt-10 grid max-w-xl grid-cols-2 gap-x-8 gap-y-5">
             {metaItems.map((item) => (
               <div key={item.label}>
-                <dt className="text-xs font-medium tracking-[0.14em] text-slate-500 uppercase">
+                <dt className="font-mono text-xs uppercase tracking-[0.14em] text-ink-muted">
                   {item.label}
                 </dt>
-                <dd className="mt-1.5 text-sm font-medium text-slate-950 sm:text-base">
+                <dd className="mt-1.5 text-sm font-medium text-ink sm:text-base">
                   {item.value}
                 </dd>
               </div>
@@ -83,7 +83,7 @@ export function Hero({ project }: HeroProps) {
                 href={project.websiteUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-slate-950 px-6 text-sm font-medium text-white transition duration-300 hover:-translate-y-0.5 hover:bg-orange-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-offset-2"
+                className="inline-flex min-h-12 items-center justify-center gap-2 border border-ink bg-ink px-6 text-sm font-medium text-paper transition hover:bg-accent hover:border-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
               >
                 Visit Website
                 <ExternalLink className="size-4" aria-hidden="true" />
@@ -95,7 +95,7 @@ export function Hero({ project }: HeroProps) {
                 href={project.githubUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-6 text-sm font-medium text-slate-950 shadow-sm transition duration-300 hover:-translate-y-0.5 hover:border-orange-500 hover:text-orange-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-offset-2"
+                className="inline-flex min-h-12 items-center justify-center gap-2 border border-rule bg-paper px-6 text-sm font-medium text-ink transition hover:border-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
               >
                 <GithubIcon className="size-4" />
                 Github
@@ -103,8 +103,8 @@ export function Hero({ project }: HeroProps) {
             ) : null}
 
             <Link
-              href="/works"
-              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white/80 px-6 text-sm font-medium text-slate-700 shadow-sm transition duration-300 hover:-translate-y-0.5 hover:border-slate-300 hover:text-slate-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-offset-2"
+              href="/#projects"
+              className="inline-flex min-h-12 items-center justify-center gap-2 border border-rule bg-paper px-6 text-sm font-medium text-ink transition hover:border-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
             >
               <ArrowLeft className="size-4" aria-hidden="true" />
               Back to Works
@@ -115,8 +115,8 @@ export function Hero({ project }: HeroProps) {
         <div className="flex justify-center lg:justify-end">
           <div
             className={[
-              "relative flex aspect-square w-full max-w-[360px] items-center justify-center overflow-hidden rounded-[2rem] border border-slate-200 shadow-sm",
-              project.iconHasDarkBg ? "bg-slate-950 p-10" : "bg-white p-10",
+              "relative flex aspect-square w-full max-w-[360px] items-center justify-center overflow-hidden border border-rule",
+              project.iconHasDarkBg ? "bg-ink p-10" : "bg-paper p-10",
             ].join(" ")}
           >
             <Image

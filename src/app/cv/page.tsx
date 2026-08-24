@@ -14,7 +14,7 @@ export default function CvPage() {
   const data = getCvData();
 
   return (
-    <main className="min-h-screen bg-slate-100 px-4 pb-20 pt-28 sm:px-6 print:bg-white print:p-0 print:pt-0">
+    <main className="min-h-screen bg-paper px-4 pb-20 pt-28 sm:px-6 print:bg-white print:p-0 print:pt-0">
       <div className="mb-5 print:hidden">
         <CvToolbar />
       </div>
