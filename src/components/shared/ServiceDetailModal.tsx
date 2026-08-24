@@ -87,7 +87,7 @@ export function ServiceDetailModal({
         aria-modal="true"
         aria-labelledby="service-modal-title"
         aria-describedby="service-modal-description"
-        className="max-h-[90dvh] w-full max-w-lg overflow-y-auto border border-rule bg-paper p-5 pb-[max(1.5rem,env(safe-area-inset-bottom))] sm:max-h-[85dvh] sm:p-8"
+        className="max-h-[90dvh] w-full max-w-lg overflow-y-auto border border-rule bg-paper p-5 pb-[max(1.5rem,env(safe-area-inset-bottom))] sm:max-h-[85dvh] sm:p-8 max-sm:border-x-0 max-sm:border-b-0"
         onClick={(event) => event.stopPropagation()}
       >
         <div className="flex items-start justify-between gap-4">

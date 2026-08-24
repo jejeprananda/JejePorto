@@ -25,12 +25,23 @@ export function Navbar() {
     }
 
     function handleScroll() {
-      setIsOverVideo(window.scrollY < window.innerHeight * 0.85);
+      const pin = document.getElementById("hero-video-pin");
+      if (!pin) {
+        setIsOverVideo(false);
+        return;
+      }
+
+      const navbarHeight = 56;
+      setIsOverVideo(pin.getBoundingClientRect().bottom > navbarHeight);
     }
 
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
   }, [isHome]);
 
   useEffect(() => {

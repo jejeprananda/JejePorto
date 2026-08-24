@@ -19,9 +19,13 @@ describe("Mobile spec-sheet layout", () => {
 
   it("uses a paper navbar on light pages so scrolled content is not covered", () => {
     const nav = read("src/components/layout/Navbar.tsx");
+    const hero = read("src/components/sections/HeroVideoChapter.tsx");
     assert.match(nav, /lightOnDark/);
     assert.match(nav, /bg-paper/);
     assert.match(nav, /bg-transparent/);
+    assert.match(nav, /hero-video-pin/);
+    assert.match(nav, /getBoundingClientRect/);
+    assert.match(hero, /id="hero-video-pin"/);
   });
 
   it("uses safe-area padding on chrome and hero overlay", () => {

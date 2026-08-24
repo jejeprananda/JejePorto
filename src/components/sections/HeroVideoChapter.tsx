@@ -57,7 +57,10 @@ export function HeroVideoChapter({ children }: HeroVideoChapterProps) {
         ref={chapterRef}
         className={`relative motion-reduce:h-svh ${chapterHeight}`}
       >
-        <div className="sticky top-0 h-svh overflow-hidden bg-ink">
+        <div
+          id="hero-video-pin"
+          className="sticky top-0 h-svh overflow-hidden bg-ink"
+        >
           <video
             src="/videos/hero.mp4"
             poster="/images/hero-poster.jpg"

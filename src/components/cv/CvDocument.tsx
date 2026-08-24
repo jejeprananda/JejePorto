@@ -90,11 +90,11 @@ export function CvDocument({ data }: CvDocumentProps) {
           {data.skills.map((group) => (
             <section key={group.title} className="break-inside-avoid">
               <SidebarHeading>{group.title}</SidebarHeading>
-              <ul className="mt-3 flex flex-wrap gap-1.5">
+              <ul className="mt-3 flex min-w-0 flex-wrap gap-1.5">
                 {group.skills.map((skill) => (
                   <li
                     key={skill}
-                    className="border border-rule px-2 py-1 text-[11px] font-medium text-ink print:bg-white"
+                    className="max-w-full border border-rule px-2 py-1 text-[11px] font-medium text-ink [overflow-wrap:anywhere] print:bg-white"
                   >
                     {skill}
                   </li>
