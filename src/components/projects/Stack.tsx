@@ -8,10 +8,10 @@ export function Stack({ tech }: StackProps) {
   return (
     <SectionShell tone="white">
       <div className="max-w-2xl">
-        <p className="text-xs font-medium tracking-[0.16em] text-slate-500 uppercase">
+        <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
           Tools
         </p>
-        <h2 className="mt-4 font-serif text-4xl tracking-[-0.03em] text-slate-950 sm:text-5xl">
+        <h2 className="mt-4 text-3xl font-semibold tracking-[-0.04em] text-ink sm:text-4xl">
           Technology stack
         </h2>
       </div>
@@ -20,7 +20,7 @@ export function Stack({ tech }: StackProps) {
         {tech.map((name) => (
           <li
             key={name}
-            className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-800 shadow-sm transition duration-300 hover:-translate-y-0.5 hover:border-orange-500 hover:text-orange-600"
+            className="font-mono text-sm text-ink"
           >
             {name}
           </li>

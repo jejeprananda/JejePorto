@@ -20,10 +20,10 @@ export function InfoGrid({ project }: InfoGridProps) {
   return (
     <SectionShell tone="white">
       <div className="max-w-2xl">
-        <p className="text-xs font-medium tracking-[0.16em] text-slate-500 uppercase">
+        <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
           Details
         </p>
-        <h2 className="mt-4 font-serif text-4xl tracking-[-0.03em] text-slate-950 sm:text-5xl">
+        <h2 className="mt-4 text-3xl font-semibold tracking-[-0.04em] text-ink sm:text-4xl">
           Project info
         </h2>
       </div>
@@ -32,12 +32,12 @@ export function InfoGrid({ project }: InfoGridProps) {
         {cards.map((card) => (
           <article
             key={card.label}
-            className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-0.5"
+            className="border-t border-rule py-6"
           >
-            <p className="text-xs font-medium tracking-[0.14em] text-slate-500 uppercase">
+            <p className="font-mono text-xs uppercase tracking-[0.14em] text-ink-muted">
               {card.label}
             </p>
-            <p className="mt-3 text-base font-medium leading-7 text-slate-950">
+            <p className="mt-3 text-base font-medium leading-7 text-ink">
               {card.value}
             </p>
           </article>
