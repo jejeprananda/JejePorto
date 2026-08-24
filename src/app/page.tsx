@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { ArrowUpRight } from "lucide-react";
 
-import { HomeScrollExpand } from "@/components/sections/HomeScrollExpand";
+import { HeroVideoChapter } from "@/components/sections/HeroVideoChapter";
 import { ProjectsSection } from "@/components/sections/ProjectsSection";
 import { ServicesSection } from "@/components/sections/ServicesSection";
 import { StackSection } from "@/components/sections/StackSection";
@@ -37,7 +37,7 @@ export default function HomePage() {
         `}</style>
       </noscript>
 
-      <HomeScrollExpand>
+      <HeroVideoChapter>
         <ProjectsSection projects={projects} />
         <ServicesSection services={services} />
         <StackSection groups={stackGroups} />
@@ -92,7 +92,7 @@ export default function HomePage() {
             </div>
           </div>
         </section>
-      </HomeScrollExpand>
+      </HeroVideoChapter>
     </main>
   );
 }
