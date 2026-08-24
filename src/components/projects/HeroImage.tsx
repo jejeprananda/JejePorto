@@ -12,7 +12,7 @@ export function HeroImage({ src, caption, title }: HeroImageProps) {
   return (
     <SectionShell tone="white" tightTop>
       <figure>
-        <div className="group relative aspect-video overflow-hidden rounded-[32px] border border-slate-200 bg-slate-100 shadow-sm">
+        <div className="group relative aspect-video overflow-hidden border border-rule bg-paper">
           <Image
             src={src}
             alt={`${title} hero screenshot`}

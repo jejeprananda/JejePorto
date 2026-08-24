@@ -23,6 +23,7 @@ const files = [
   "src/components/projects/FooterCTA.tsx",
   "src/components/projects/RelatedProjects.tsx",
   "src/components/projects/SectionShell.tsx",
+  "src/components/projects/HeroImage.tsx",
 ];
 
 describe("Case study spec sheet", () => {
@@ -32,6 +33,10 @@ describe("Case study spec sheet", () => {
       assert.doesNotMatch(source, /font-serif/, file);
       assert.doesNotMatch(source, /orange-/, file);
       assert.doesNotMatch(source, /rounded-xl/, file);
+      assert.doesNotMatch(source, /rounded-\[/, file);
+      assert.doesNotMatch(source, /shadow-/, file);
+      assert.doesNotMatch(source, /border-slate-/, file);
+      assert.doesNotMatch(source, /bg-slate-100/, file);
     }
   });
 
