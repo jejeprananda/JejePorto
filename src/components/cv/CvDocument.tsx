@@ -43,24 +43,24 @@ export function CvDocument({ data }: CvDocumentProps) {
         print:max-w-none print:border-0
       "
     >
-      <header className="flex items-center gap-5 bg-ink px-8 py-8 text-white print:bg-ink print:px-10 sm:px-10">
+      <header className="flex items-center gap-4 bg-ink px-5 py-6 text-white print:bg-ink print:px-10 sm:gap-5 sm:px-10 sm:py-8">
         <div
           aria-hidden="true"
-          className="flex size-16 shrink-0 items-center justify-center bg-accent text-2xl font-bold tracking-tight text-white"
+          className="flex size-12 shrink-0 items-center justify-center bg-accent text-xl font-bold tracking-tight text-white sm:size-16 sm:text-2xl"
         >
           {initials(data.name)}
         </div>
-        <div>
-          <h1 className="text-3xl font-semibold tracking-[-0.04em] sm:text-4xl">
+        <div className="min-w-0">
+          <h1 className="text-2xl font-semibold tracking-[-0.04em] [overflow-wrap:anywhere] sm:text-4xl">
             {data.name}
           </h1>
-          <p className="mt-2 font-mono text-xs uppercase tracking-[0.18em] text-white/70">
+          <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.12em] text-white/70 sm:text-xs sm:tracking-[0.18em]">
             {data.headline}
           </p>
         </div>
       </header>
 
-      <div className="grid grid-cols-1 gap-y-8 px-8 py-8 sm:px-10 md:grid-cols-[240px_1fr] md:gap-x-10 print:px-10 print:py-8">
+      <div className="grid min-w-0 grid-cols-1 gap-y-8 px-5 py-6 sm:px-10 sm:py-8 md:grid-cols-[240px_minmax(0,1fr)] md:gap-x-10 print:px-10 print:py-8">
         <aside className="flex flex-col gap-6 md:border-r md:border-rule md:pr-8 print:md:border-rule">
           <section>
             <SidebarHeading>Contact</SidebarHeading>

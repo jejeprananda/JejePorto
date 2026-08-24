@@ -8,7 +8,7 @@ export function CloseCta() {
           <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
             Next
           </p>
-          <h2 className="mt-3 text-3xl font-semibold tracking-[-0.04em] text-ink sm:text-4xl">
+          <h2 className="mt-3 min-w-0 text-3xl font-semibold tracking-[-0.04em] text-ink [overflow-wrap:anywhere] sm:text-4xl">
             Have something in mind?
           </h2>
           <p className="mt-3 text-sm leading-6 text-ink-muted">
@@ -22,13 +22,13 @@ export function CloseCta() {
         <div className="flex w-full flex-col gap-3 sm:flex-row lg:w-auto">
           <Link
             href="/contact"
-            className="inline-flex min-h-12 w-full items-center justify-center border border-ink bg-ink px-7 text-sm font-medium text-paper transition hover:bg-accent hover:border-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-paper lg:w-auto"
+            className="inline-flex min-h-12 w-full items-center justify-center border border-ink bg-ink px-7 text-sm font-medium text-paper transition hover:bg-accent hover:border-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-paper sm:w-auto"
           >
             Contact Me
           </Link>
           <Link
             href="/cv"
-            className="inline-flex min-h-12 w-full items-center justify-center border border-rule bg-paper px-7 font-mono text-sm font-medium text-ink transition hover:border-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-paper lg:w-auto"
+            className="inline-flex min-h-12 w-full items-center justify-center border border-rule bg-paper px-7 font-mono text-sm font-medium text-ink transition hover:border-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-paper sm:w-auto"
           >
             Download CV
           </Link>

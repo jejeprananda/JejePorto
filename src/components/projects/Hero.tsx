@@ -56,7 +56,7 @@ export function Hero({ project }: HeroProps) {
             </ol>
           </nav>
 
-          <h1 className="mt-8 text-[clamp(2.5rem,6vw,4.5rem)] font-semibold tracking-[-0.04em] text-ink">
+          <h1 className="mt-8 min-w-0 text-[clamp(2rem,8vw,4.5rem)] font-semibold tracking-[-0.04em] text-ink [overflow-wrap:anywhere]">
             {project.title}
           </h1>
 
@@ -64,26 +64,26 @@ export function Hero({ project }: HeroProps) {
             {project.shortDescription}
           </p>
 
-          <dl className="mt-10 grid max-w-xl grid-cols-2 gap-x-8 gap-y-5">
+          <dl className="mt-10 grid max-w-xl grid-cols-1 gap-x-8 gap-y-5 min-[380px]:grid-cols-2">
             {metaItems.map((item) => (
-              <div key={item.label}>
+              <div key={item.label} className="min-w-0">
                 <dt className="font-mono text-xs uppercase tracking-[0.14em] text-ink-muted">
                   {item.label}
                 </dt>
-                <dd className="mt-1.5 text-sm font-medium text-ink sm:text-base">
+                <dd className="mt-1.5 text-sm font-medium text-ink [overflow-wrap:anywhere] sm:text-base">
                   {item.value}
                 </dd>
               </div>
             ))}
           </dl>
 
-          <div className="mt-10 flex flex-wrap gap-3">
+          <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             {project.websiteUrl ? (
               <Link
                 href={project.websiteUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex min-h-12 items-center justify-center gap-2 border border-ink bg-ink px-6 text-sm font-medium text-paper transition hover:bg-accent hover:border-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+                className="inline-flex min-h-12 w-full items-center justify-center gap-2 border border-ink bg-ink px-6 text-sm font-medium text-paper transition hover:bg-accent hover:border-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 sm:w-auto"
               >
                 Visit Website
                 <ExternalLink className="size-4" aria-hidden="true" />
@@ -95,7 +95,7 @@ export function Hero({ project }: HeroProps) {
                 href={project.githubUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex min-h-12 items-center justify-center gap-2 border border-rule bg-paper px-6 text-sm font-medium text-ink transition hover:border-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+                className="inline-flex min-h-12 w-full items-center justify-center gap-2 border border-rule bg-paper px-6 text-sm font-medium text-ink transition hover:border-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 sm:w-auto"
               >
                 <GithubIcon className="size-4" />
                 Github
@@ -104,7 +104,7 @@ export function Hero({ project }: HeroProps) {
 
             <Link
               href="/#projects"
-              className="inline-flex min-h-12 items-center justify-center gap-2 border border-rule bg-paper px-6 text-sm font-medium text-ink transition hover:border-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+              className="inline-flex min-h-12 w-full items-center justify-center gap-2 border border-rule bg-paper px-6 text-sm font-medium text-ink transition hover:border-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 sm:w-auto"
             >
               <ArrowLeft className="size-4" aria-hidden="true" />
               Back to Works

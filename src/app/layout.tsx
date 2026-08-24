@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import { Geist, Geist_Mono } from "next/font/google";
 
@@ -24,6 +24,12 @@ export const metadata: Metadata = {
   },
   description:
     "Portfolio of Jessy Prananda, a Fullstack Designer who designs and builds modern digital products.",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
 };
 
 type RootLayoutProps = {

@@ -22,7 +22,7 @@ export function HeroImage({ src, caption, title }: HeroImageProps) {
             priority
           />
         </div>
-        <figcaption className="mt-5 text-center text-sm leading-6 text-slate-600">
+        <figcaption className="mt-5 text-center text-sm leading-6 text-ink-muted">
           {caption}
         </figcaption>
       </figure>

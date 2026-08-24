@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <main className="bg-paper pt-24">
+    <main className="bg-paper pt-[max(6rem,calc(env(safe-area-inset-top)+4.5rem))]">
       <ContactSection />
     </main>
   );
